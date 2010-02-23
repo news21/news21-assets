@@ -74,6 +74,7 @@ ul.news21-clean li.news21-footer-li {
 	clear:both;
 	overflow:hidden;
 	padding:0;
+	margin-left:0px;
 }
 ul.news21-clean li.news21-footer-li a.news21-footer-a { color:gray; text-decoration:none; display:block; font-weight:normal; }
 ul.news21-clean li.news21-footer-li a.news21-footer-a:link { color:gray; text-decoration:none; display:block; font-weight:normal; }
