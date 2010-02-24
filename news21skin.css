@@ -100,20 +100,15 @@ ul.news21-clean li.news21-footer-li a.news21-footer-a:active { color:gray; text-
 ul.news21-clean li.news21-footer-li a.news21-footer-a:hover { color:gray; text-decoration:none; display:block; font-weight:normal; }
 
 
-#news21-footer-newsrooms{
-	float:left;
-	margin-right:30px;
-	width:100px;
-}
-#news21-footer-years{
-	float:left;
-	margin-right:20px;
-	width:170px;
-}
 #news21-footer-projects {
 	float:left;
-	margin-right:15px;
-	width:160px;
+	margin-right:10px;
+	width:145px;
+}
+#news21-footer-newsrooms{
+	float:left;
+	margin-right:25px;
+	width:100px;
 }
 #news21-footer-category {
 	float:left;
@@ -126,6 +121,11 @@ ul.news21-clean li.news21-footer-li a.news21-footer-a:hover { color:gray; text-d
 	width:75px;
 	margin-top:15px;
 }
+#news21-footer-years{
+	float:left;
+	margin-right:20px;
+	width:165px;
+}
 #news21-footer-social {
 	float:left;
 	margin-right:35px;
@@ -133,5 +133,5 @@ ul.news21-clean li.news21-footer-li a.news21-footer-a:hover { color:gray; text-d
 }
 #news21-footer-multimedia {
 	float:left;
-	width:75px;
+	width:105px;
 }
