@@ -30,7 +30,15 @@ display:block;
 #news21-header{
 	width:940px;
 	background-color:#AFAFAF;
-	background:url('http://assets.news21.com/header.jpg') no-repeat;
+	background:url('http://assets.news21.com/news21-header.jpg') no-repeat;
+	height:39px;
+	margin:0px 0px 10px 10px;
+}
+
+#news21-header.asu{
+	width:940px;
+	background-color:#AFAFAF;
+	background:url('http://assets.news21.com/news21-header.jpg') no-repeat;
 	height:68px;
 	margin:0px 0px 10px 10px;
 }
