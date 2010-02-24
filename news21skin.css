@@ -32,7 +32,7 @@ display:block;
 	background-color:#AFAFAF;
 	background:url('http://assets.news21.com/news21-header.jpg') no-repeat;
 	height:39px;
-	margin:0px 0px 0px 10px;
+	margin:0px 0px 0px 0px;
 }
 
 #news21-header.arizonastate{ background:url('http://assets.news21.com/news21-header-arizonastate.jpg') no-repeat; }
@@ -48,11 +48,11 @@ display:block;
 	width:940px;
 	background:url('http://assets.news21.com/news21-menu.jpg') no-repeat;
 	height:29px;
-	margin:0px 0px 0px 10px;
+	margin:0px 0px 0px 0px;
 }
 
 #news21-footer{
-	width:960px;
+	width:940px;
 }
 
 #news21-footer h3 {
@@ -67,12 +67,12 @@ display:block;
 }
 
 #news21-footer-top{ background:url('http://assets.news21.com/news21-footer-top.gif') no-repeat; height:40px;}
-#news21-footer-content{ padding: 20px 40px; }
+#news21-footer-content{ padding: 20px 30px; }
 #news21-footer-copy{ 
 	background:url('http://assets.news21.com/news21-footer-bottom.gif') no-repeat; 
 	height:40px;
 	margin-top:10px;
-	padding:10px 0px 0px 20px;
+	padding:10px 0px 0px 10px;
 	color:gray;
 	font-size:10px;
 	font-family:Verdana,Arial,Helvetica,Sans-Serif;
