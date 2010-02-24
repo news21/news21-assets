@@ -35,13 +35,16 @@ display:block;
 	margin:0px 0px 10px 10px;
 }
 
-#news21-header.asu{
-	width:940px;
-	background-color:#AFAFAF;
-	background:url('http://assets.news21.com/news21-header.jpg') no-repeat;
-	height:68px;
-	margin:0px 0px 10px 10px;
-}
+#news21-header.arizonastate{ background:url('http://assets.news21.com/news21-header-arizonastate.jpg') no-repeat; }
+#news21-header.northcarolina{ background:url('http://assets.news21.com/news21-header-northcarolina.jpg') no-repeat; }
+#news21-header.berkeley{ background:url('http://assets.news21.com/news21-header-berkeley.jpg') no-repeat; }
+#news21-header.northwestern{ background:url('http://assets.news21.com/news21-header-northwestern.jpg') no-repeat; }
+#news21-header.columbia{ background:url('http://assets.news21.com/news21-header-columbia.jpg') no-repeat; }
+#news21-header.southerncalifornia{ background:url('http://assets.news21.com/news21-header-southerncalifornia.jpg') no-repeat; }
+#news21-header.maryland{ background:url('http://assets.news21.com/news21-header-maryland.jpg') no-repeat; }
+#news21-header.syracuse{ background:url('http://assets.news21.com/news21-header-syracuse.jpg') no-repeat; }
+
+
 #news21-footer{
 	width:960px;
 }
