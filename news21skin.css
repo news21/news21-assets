@@ -135,3 +135,17 @@ ul.news21-clean li.news21-footer-li a.news21-footer-a:hover { color:gray; text-d
 	float:left;
 	width:105px;
 }
+
+
+.news21-search{
+    padding-top:13px;
+    padding-left:750px;
+}
+
+.clearInput {
+    background:none repeat scroll 0 0 transparent;
+    border:medium none;
+    color:#bbb;
+    font:11px "Lucida Grande","Lucida Sans Unicode",Arial,Verdana,sans-serif;
+    width:145px;
+}
