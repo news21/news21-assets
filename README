@@ -1,23 +1,25 @@
-<link rel="stylesheet" href="http://assets.news21.com/news21skin.css" type="text/css" media="screen" />
-<script type="text/javascript" src="http://assets.news21.com/news21skin.js"></script>
 
-HEADER
-<div id="news21-header" class="asu"></div>
-
-FOOTER
-<div id="news21-footer"></div>
+JS & CSS INCLUDES
+<link rel="stylesheet" href="http://assets.news21.com/2010/news21skin.css" type="text/css" media="screen" />
+<script type="text/javascript" src="http://assets.news21.com/2010/news21skin.js"></script>
 
 BASED OFF OF 960PX WIDTH
 
+HEADER
+<div id="news21-header"></div>
 
-
-OR 
-
-IF USING JQUERY (WARNING! YOU MAY RUN INTO CONFLICT WITH PROTOTYPE)
-
-<link rel="stylesheet" href="http://assets.news21.com/news21skin.css" type="text/css" media="screen" />
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.js"></script>
-<script type="text/javascript" src="http://assets.news21.com/news21skin-jquery.js"></script>
+INCUBATOR SPECIFIC HEADER
+<div id="news21-header" class="arizonastate"></div>
+<div id="news21-header" class="berkeley"></div>
+<div id="news21-header" class="columbia"></div>
+<div id="news21-header" class="maryland"></div>
+<div id="news21-header" class="northcarolina"></div>
+<div id="news21-header" class="southerncalifornia"></div>
+<div id="news21-header" class="syracuse"></div>
+<div id="news21-header" class="northwestern"></div>
 
 FOOTER
 <div id="news21-footer"></div>
+
+OPTIONAL BREADCRUMB / MENU BACKGROUND
+<div id="news21-menu"></div>
