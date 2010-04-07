@@ -30,22 +30,22 @@ display:block;
 #news21-header{
 	width:940px;
 	background-color:#AFAFAF;
-	background:url('news21-header.jpg') no-repeat;
+	background:url('http://assets.news21.com/2010/news21-header.jpg') no-repeat;
 	height:30px;
 	margin:0px 0px 0px 0px;
 }
 
 #news21-header.header-white{
-	background:url('news21-header-white.jpg') no-repeat;
+	background:url('http://assets.news21.com/2010/news21-header-white.jpg') no-repeat;
 }
 
 #news21-header.header-transparent{
-	background:url('news21-header-transparent.png') no-repeat;
+	background:url('http://assets.news21.com/2010/news21-header-transparent.png') no-repeat;
 }
 
 #news21-menu{
 	width:940px;
-	background:url('http://assets.news21.com/news21-menu.jpg') no-repeat;
+	background:url('http://assets.news21.com/2010/news21-menu.jpg') no-repeat;
 	height:29px;
 	margin:0px 0px 0px 0px;
 }
@@ -153,7 +153,7 @@ ul.news21-clean li.news21-footer-li a.news21-footer-a:hover { color:gray; text-d
 
 
 .news21-search{
-    padding-top:4px;
+    padding-top:6px;
     padding-left:747px;
 }
 
