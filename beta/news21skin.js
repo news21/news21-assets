@@ -25,7 +25,7 @@ window.onload = function () {
     var _searchAffiliates = {'arizonastate':'Arizona State','berkeley':'Berkeley','columbia':'Columbia','maryland':'Maryland','northcarolina':'North Carolina','northwestern':'Northwestern','southerncalifornia':'Southern California','syracuse':'Syracuse'};
     
     if(_news21header != null) {    
-        document.getElementById('news21-header').innerHTML = '<form method="get" action="http://beta.news21.com/search/" id="news21-search" class="news21-search" name="news21-search"><input type="hidden" value="" name="affiliate" id="news21-search-affiliate"/><input class="clearInput" type="text" name="q" value="Search News21 ..."  onblur="if (this.value == \'\') this.value = \'Search News21 ...\';" onfocus="if (this.value == \'Search News21 ...\') this.value = \'\';" /></form>';
+        document.getElementById('news21-header').innerHTML = '<a href="http://news21.com"><img src="http://assets.news21.com/transparent-1x1.gif" id="homelink" /></a><a href="http://news21.com/about/"><img src="http://assets.news21.com/transparent-1x1.gif" id="aboutlink" /></a><form method="get" action="http://beta.news21.com/search/" id="news21-search" class="news21-search" name="news21-search"><input type="hidden" value="" name="affiliate" id="news21-search-affiliate"/><input class="clearInput" type="text" name="q" value="Search News21 ..."  onblur="if (this.value == \'\') this.value = \'Search News21 ...\';" onfocus="if (this.value == \'Search News21 ...\') this.value = \'\';" /></form>';
         if(_news21header.className != "") document.getElementById('news21-search-affiliate').value=_searchAffiliates[_news21header.className.split(' ')[0]];
     }
     
