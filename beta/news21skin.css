@@ -152,6 +152,48 @@ ul.news21-clean li.news21-footer-li a.news21-footer-a:hover { color:gray; text-d
 }
 
 
+#news21-header-aboutlink {
+	height:20px;
+	width:60px;
+}
+
+
+
+.news21-header-trigger{
+	width:60px;
+}
+#news21-header-about {
+	float:left;
+	padding-left:670px;
+	padding-top:5px;
+}
+
+#news21-header-popup {
+	background: transparent url('http://assets.news21.com/beta/toolTip_black_arrow.png') no-repeat scroll top center;
+	position: absolute;
+    display: none;
+    z-index: 50;
+	width: 300px;
+	height: 115px;
+	text-decoration: none
+}
+
+#news21-header-popup-inner {
+	width: 260px;
+	margin: 35px 0 0 20px;
+	color: #fff;
+	line-height: 140%;
+	font-size: 9pt;
+}
+
+.news21-header-toolTiphead {
+	color: #f29812;
+}
+
+
+
+
+
 .news21-search{
     padding-top:6px;
     padding-left:747px;
