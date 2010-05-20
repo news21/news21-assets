@@ -131,23 +131,23 @@ ul.news21-clean li.news21-footer-li a.news21-footer-a:hover { color:gray; text-d
 }
 #news21-footer-years{
 	float:left;
-	margin-right:20px;
+	margin-right:10px;
 	width:165px;
 }
 #news21-footer-social {
 	float:left;
-	margin-right:25px;
+	margin-right:20px;
 	width:65px;
 }
 #news21-footer-free {
 	float:left;
-	margin-right:30px;
+	margin-right:25px;
 	width:80px;
 }
 #news21-footer-innovation {
 	float:left;
-	width:65px;
-	margin-right:10px;
+	width:90px;
+	margin-right:5px;
 }
 
 
