@@ -27,8 +27,8 @@ var initN21Tooltip = function() {
 	            beingShown = true;
 	            
 	            info.css({
-	            	"top": 40,
-	                "left": 690,
+	            	"top": 39,
+	                "left": 390,
 	                "display": "block"
 	            }).animate({
 	                 "top": "-=" + distance + "px",
