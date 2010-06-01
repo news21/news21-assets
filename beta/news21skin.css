@@ -95,7 +95,7 @@ display:block;
 
 ul.news21-clean {
 	list-style-type:none;
-	margin:0 0 10px;
+	margin:0 0 10px !important;
 	padding:0;
 	color:gray;
 	font-size:9px;
