@@ -204,8 +204,8 @@ ul.news21-clean li.news21-footer-li a.news21-footer-a:hover { color:gray; text-d
 .clearInput {
     background:none repeat scroll 0 0 transparent;
     border:medium none !important;
-	margin:0px;
-	background-color:#fff;
+	margin:0px !important;
+	background-color:#fff !important;
     color:#bbb;
     font:11px "Lucida Grande","Lucida Sans Unicode",Arial,Verdana,sans-serif;
     width:265px;
