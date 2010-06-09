@@ -35,12 +35,6 @@ display:block;
 	margin:0px 0px 0px 0px;
 }
 
-/*
-#news21-header.header-white{
-	background:url('http://assets.news21.com/beta/news21-header-white.jpg') no-repeat;
-}
-*/
-
 #news21-header.header-transparent{
 	background:url('http://assets.news21.com/beta/news21-header-transparent.png') no-repeat;
 }
@@ -90,7 +84,8 @@ display:block;
 	font-family:Verdana,Arial,Helvetica,Sans-Serif;
 }
 #news21-footer-bottom img{ vertical-align:middle; }
-#news21-footer-copy { padding-right:105px; }
+#news21-footer-copy { padding-right:80px; }
+#news21-footer-copy a { color:gray; text-decoration:none; }
 #news21-footer-news21logo { padding-right:125px; }
 #news21-footer-carnegielogo { padding-right:20px; }
 #news21-footer-knightlogo { padding-right:10px; }
@@ -166,7 +161,7 @@ ul.news21-clean li.news21-footer-li a.news21-footer-a:hover { color:gray; text-d
 }
 #news21-header-about {
 	float:left;
-	padding-left:250px;
+	padding-left:270px;
 	padding-top:5px;
 }
 
@@ -191,8 +186,6 @@ ul.news21-clean li.news21-footer-li a.news21-footer-a:hover { color:gray; text-d
 .news21-header-toolTiphead {
 	color: #f29812;
 }
-
-
 
 
 
