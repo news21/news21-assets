@@ -39,6 +39,10 @@ display:block;
 	background:url('http://assets.news21.com/beta/news21-header-transparent.png') no-repeat;
 }
 
+#news21-header.header-pure{
+	background:url('http://assets.news21.com/beta/news21-header-pure.png') no-repeat;
+}
+
 #news21-menu{
 	width:940px;
 	background:url('http://assets.news21.com/beta/news21-menu.jpg') no-repeat;
