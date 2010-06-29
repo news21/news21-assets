@@ -64,6 +64,9 @@ display:block;
 	font-family:Verdana,Arial,Helvetica,Sans-Serif;
 	text-align:left;
 }
+#news21-footer.footer-white h3 {
+	color:#fff;
+}
 
 #news21-footer-top{ 
     border-bottom:solid 1px #a7a7a7;
@@ -72,6 +75,10 @@ display:block;
 	color:gray;
 	font-size:11px;
 	font-family:Verdana,Arial,Helvetica,Sans-Serif;
+}
+#news21-footer.footer-white #news21-footer-top{ 
+    border-bottom:solid 1px #fff;
+	color:#fff;
 }
 #news21-footer-top img{ vertical-align:middle; }
 #news21-footer-mission{ padding-right:240px; }
@@ -90,6 +97,7 @@ display:block;
 #news21-footer-bottom img{ vertical-align:middle; }
 #news21-footer-copy { padding-right:80px; }
 #news21-footer-copy a { color:gray; text-decoration:none; font-size:8px; }
+#news21-footer.footer-white #news21-footer-copy { color:#fff; }
 #news21-footer-news21logo { padding-right:125px; }
 #news21-footer-carnegielogo { padding-right:20px; }
 #news21-footer-knightlogo { padding-right:10px; }
@@ -112,8 +120,14 @@ ul.news21-clean li.news21-footer-li {
 ul.news21-clean li.news21-footer-li a.news21-footer-a { color:gray; text-decoration:none; display:block; font-weight:normal; }
 ul.news21-clean li.news21-footer-li a.news21-footer-a:link { color:gray; text-decoration:none; display:block; font-weight:normal; }
 ul.news21-clean li.news21-footer-li a.news21-footer-a:visited { color:gray; text-decoration:none; display:block; font-weight:normal; }
-ul.news21-clean li.news21-footer-li a.news21-footer-a:active { color:gray; text-decoration:none; display:block; font-weight:normal; }
 ul.news21-clean li.news21-footer-li a.news21-footer-a:hover { color:gray; text-decoration:none; display:block; font-weight:normal; }
+ul.news21-clean li.news21-footer-li a.news21-footer-a:active { color:gray; text-decoration:none; display:block; font-weight:normal; }
+
+#news21-footer.footer-white ul.news21-clean li.news21-footer-li a.news21-footer-a { color:#fff; }
+#news21-footer.footer-white ul.news21-clean li.news21-footer-li a.news21-footer-a:link { color:#fff; }
+#news21-footer.footer-white ul.news21-clean li.news21-footer-li a.news21-footer-a:visited { color:#fff; }
+#news21-footer.footer-white ul.news21-clean li.news21-footer-li a.news21-footer-a:hover { color:#fff; }
+#news21-footer.footer-white ul.news21-clean li.news21-footer-li a.news21-footer-a:active { color:#fff; }
 
 #news21-footer-newsrooms{
 	float:left;
