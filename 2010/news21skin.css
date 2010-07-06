@@ -30,18 +30,22 @@ display:block;
 #news21-header{
 	width:940px;
 	background-color:#AFAFAF;
-	background:url('http://assets.news21.com/beta/news21-header.jpg') no-repeat;
+	background:url('http://assets.news21.com/2010/news21-header.jpg') no-repeat;
 	height:36px;
 	margin:0px 0px 0px 0px;
 }
 
 #news21-header.header-transparent{
-	background:url('http://assets.news21.com/beta/news21-header-transparent.png') no-repeat;
+	background:url('http://assets.news21.com/2010/news21-header-transparent.png') no-repeat;
+}
+
+#news21-header.header-pure{
+	background:url('http://assets.news21.com/2010/news21-header-pure.png') no-repeat;
 }
 
 #news21-menu{
 	width:940px;
-	background:url('http://assets.news21.com/beta/news21-menu.jpg') no-repeat;
+	background:url('http://assets.news21.com/2010/news21-menu.jpg') no-repeat;
 	height:29px;
 	margin:0px 0px 0px 0px;
 }
@@ -60,6 +64,9 @@ display:block;
 	font-family:Verdana,Arial,Helvetica,Sans-Serif;
 	text-align:left;
 }
+#news21-footer.footer-white h3 {
+	color:#fff;
+}
 
 #news21-footer-top{ 
     border-bottom:solid 1px #a7a7a7;
@@ -68,6 +75,10 @@ display:block;
 	color:gray;
 	font-size:11px;
 	font-family:Verdana,Arial,Helvetica,Sans-Serif;
+}
+#news21-footer.footer-white #news21-footer-top{ 
+    border-bottom:solid 1px #fff;
+	color:#fff;
 }
 #news21-footer-top img{ vertical-align:middle; }
 #news21-footer-mission{ padding-right:240px; }
@@ -84,9 +95,10 @@ display:block;
 	font-family:Verdana,Arial,Helvetica,Sans-Serif;
 }
 #news21-footer-bottom img{ vertical-align:middle; }
-#news21-footer-copy { padding-right:65px; }
-#news21-footer-copy a { color:gray; text-decoration:none;font-weight:normal; font-size:8px; }
-#news21-footer-news21logo { padding-right:120px; }
+#news21-footer-copy { padding-right:80px; }
+#news21-footer-copy a { color:gray; text-decoration:none; font-size:8px; }
+#news21-footer.footer-white #news21-footer-copy { color:#fff; }
+#news21-footer-news21logo { padding-right:125px; }
 #news21-footer-carnegielogo { padding-right:20px; }
 #news21-footer-knightlogo { padding-right:10px; }
 
@@ -108,17 +120,23 @@ ul.news21-clean li.news21-footer-li {
 ul.news21-clean li.news21-footer-li a.news21-footer-a { color:gray; text-decoration:none; display:block; font-weight:normal; }
 ul.news21-clean li.news21-footer-li a.news21-footer-a:link { color:gray; text-decoration:none; display:block; font-weight:normal; }
 ul.news21-clean li.news21-footer-li a.news21-footer-a:visited { color:gray; text-decoration:none; display:block; font-weight:normal; }
-ul.news21-clean li.news21-footer-li a.news21-footer-a:active { color:gray; text-decoration:none; display:block; font-weight:normal; }
 ul.news21-clean li.news21-footer-li a.news21-footer-a:hover { color:gray; text-decoration:none; display:block; font-weight:normal; }
+ul.news21-clean li.news21-footer-li a.news21-footer-a:active { color:gray; text-decoration:none; display:block; font-weight:normal; }
+
+#news21-footer.footer-white ul.news21-clean li.news21-footer-li a.news21-footer-a { color:#fff; }
+#news21-footer.footer-white ul.news21-clean li.news21-footer-li a.news21-footer-a:link { color:#fff; }
+#news21-footer.footer-white ul.news21-clean li.news21-footer-li a.news21-footer-a:visited { color:#fff; }
+#news21-footer.footer-white ul.news21-clean li.news21-footer-li a.news21-footer-a:hover { color:#fff; }
+#news21-footer.footer-white ul.news21-clean li.news21-footer-li a.news21-footer-a:active { color:#fff; }
 
 #news21-footer-newsrooms{
 	float:left;
-	margin-right:25px;
+	margin-right:20px;
 	width:100px;
 }
 #news21-footer-projects {
 	float:left;
-	margin-right:10px;
+	margin-right:25px;
 	width:140px;
 }
 #news21-footer-category {
@@ -128,23 +146,23 @@ ul.news21-clean li.news21-footer-li a.news21-footer-a:hover { color:gray; text-d
 }
 #news21-footer-years{
 	float:left;
-	margin-right:10px;
-	width:165px;
+	margin-right:20px;
+	width:150px;
 }
 #news21-footer-social {
 	float:left;
-	margin-right:20px;
+	margin-right:15px;
 	width:65px;
 }
 #news21-footer-free {
 	float:left;
-	margin-right:25px;
+	margin-right:15px;
 	width:80px;
 }
 #news21-footer-innovation {
 	float:left;
 	width:90px;
-	margin-right:5px;
+	margin-right:15px;
 }
 
 
@@ -166,7 +184,7 @@ ul.news21-clean li.news21-footer-li a.news21-footer-a:hover { color:gray; text-d
 }
 
 #news21-header-popup {
-	background: transparent url('http://assets.news21.com/beta/toolTip_black_arrow.png') no-repeat scroll top center;
+	background: transparent url('http://assets.news21.com/2010/toolTip_black_arrow.png') no-repeat scroll top center;
 	position: absolute;
     display: none;
     z-index: 50;
