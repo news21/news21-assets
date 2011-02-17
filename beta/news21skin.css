@@ -221,3 +221,40 @@ ul.news21-clean li.news21-footer-li a.news21-footer-a:active { color:gray; text-
     font:11px "Lucida Grande","Lucida Sans Unicode",Arial,Verdana,sans-serif;
     width:280px;
 }
+
+div#news21republish_overlay {
+	display:none;
+	width:800px;
+	height:400px;
+	background-color:#fff;
+	padding: 10px;
+	font-family: Helvetica, Arial, 'Liberation Sans', FreeSans, sans-serif;
+}
+div.news21republish_title {
+	background: #F49900;
+	color:#fff;
+	border: 1px solid #efefef;
+	margin-bottom: 10px;
+	padding: 10px 10px 5px;
+}
+h3.news21republish_title_link{
+	font-size: 24px;
+	line-height: 1;
+	font-weight: bold;
+	margin:0px;
+}
+p.news21republish_byline{
+	font-size: 14px;
+	line-height: 1.4;
+	margin: 0px 0px 0px 10px;
+	color: #efefef;
+}
+div#news21republish_overlay_body{
+	font-size:12px;
+}
+div#news21republish_footer {
+	width:780px;
+}
+div#news21republish_footer img {
+	padding: 10px 20px 10px 10px;
+}
