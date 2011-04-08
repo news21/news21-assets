@@ -1,0 +1,100 @@
+ul, li, h3, h2, h1, p{
+	padding:0;
+	margin:0;
+	list-style:none;
+}
+
+.sidebar{
+	position:absolute;
+	right:5px;
+	top:15px;
+}
+
+#links{
+	border:1px solid black;
+	/*width:210px;*/
+	padding:10px;
+	background-color:white;
+}
+	#links h3{
+		color:#933;
+	}
+	#links ul{
+		padding: 8px 0 3px 20px;
+	}
+	#links li{
+		list-style-type:circle;
+	}
+	#links a{
+		color:#69C;
+	}
+
+h1{
+	margin:20px 0;
+	color:#5B739C;
+}
+	h1 strong{
+		font-size:13px;
+		color:#777;
+	}
+h2.title{
+	color:#933;
+	margin-bottom:10px;
+	text-align:right;
+}
+.clear{
+	clear:left;
+}
+
+
+
+body{
+	position:relative;
+	overflow:hidden;
+	width:3000px;
+	height:20000px;
+	padding: 0 5px;
+	font-family: Verdana, sans-serif;
+	background-color: #DDD;
+}
+div.page{
+	margin:20px;
+	width:900px;
+	height:550px;
+	font-weight:bolder;
+	text-align:center;
+	padding:0px;
+	position:relative;
+	float:left;
+	background-color:#fff;
+	overflow:hidden;
+}
+div.page{
+	color:#999999;
+}
+div.page a{
+	color:#efefef;
+}
+
+
+div.n21pagepreview{ background-color:#fff; top: 0; left: 0px; width: 900px; height: 550px; }
+div.n21pagepreview#page1 { background: url(template.jpg) no-repeat #fff 0px 0px; }
+div.n21pagepreview#page2 { background: url(page-2.jpg) no-repeat #fff 0px 0px; }
+div.n21pagepreview#page3 { background: no-repeat #ddd 0px 0px; }
+div.n21pagepreview#page4 { background: url(page-4.jpg) no-repeat #fff 0px 0px; }
+div.n21pagepreview#page5 { background: url(page-5.jpg) no-repeat #fff 0px 0px; }
+div.n21pagepreview#page6 { background: url(page-6.jpg) no-repeat #fff 0px 0px; }
+div.n21pagepreview#page7 { background: url(page-7.jpg) no-repeat #fff 0px 0px; }
+div.n21pagepreview#page8 { background: url(page-8.jpg) no-repeat #fff 0px 0px; }
+div.n21pagepreview#page9 { background: url(page-9.jpg) no-repeat #fff 0px 0px; }
+div.n21pagepreview#page10 { background: url(page-10.jpg) no-repeat #fff 0px 0px; }
+div.n21pagepreview#page11 { background: url(page-1.jpg) no-repeat #fff 0px 0px; }
+div.n21pagepreview#page12 { background: url(page-2.jpg) no-repeat #fff 0px 0px; }
+div.n21pagepreview#page13 { background: url(page-3.jpg) no-repeat #fff 0px 0px; }
+div.n21pagepreview#page14 { background: url(page-4.jpg) no-repeat #fff 0px 0px; }
+div.n21pagepreview#page15 { background: url(page-5.jpg) no-repeat #fff 0px 0px; }
+div.n21pagepreview#page16 { background: url(page-6.jpg) no-repeat #fff 0px 0px; }
+div.n21pagepreview#page17 { background: url(page-7.jpg) no-repeat #fff 0px 0px; }
+div.n21pagepreview#page18 { background: url(page-8.jpg) no-repeat #fff 0px 0px; }
+div.n21pagepreview#page19 { background: url(page-9.jpg) no-repeat #fff 0px 0px; }
+div.n21pagepreview#page20 { background: url(page-10.jpg) no-repeat #fff 0px 0px; }
