@@ -30,22 +30,22 @@ display:block;
 #news21-header{
 	width:940px;
 	background-color:#AFAFAF;
-	background:url('http://assets.news21.com/beta/news21-header.jpg') no-repeat;
+	background:url('http://assets.news21.com/2011/news21-header.jpg') no-repeat;
 	height:36px;
 	margin:0px 0px 0px 0px;
 }
 
 #news21-header.header-transparent{
-	background:url('http://assets.news21.com/beta/news21-header-transparent.png') no-repeat;
+	background:url('http://assets.news21.com/2011/news21-header-transparent.png') no-repeat;
 }
 
 #news21-header.header-pure{
-	background:url('http://assets.news21.com/beta/news21-header-pure.png') no-repeat;
+	background:url('http://assets.news21.com/2011/news21-header-pure.png') no-repeat;
 }
 
 #news21-menu{
 	width:940px;
-	background:url('http://assets.news21.com/beta/news21-menu.jpg') no-repeat;
+	background:url('http://assets.news21.com/2011/news21-menu.jpg') no-repeat;
 	height:29px;
 	margin:0px 0px 0px 0px;
 }
@@ -184,7 +184,7 @@ ul.news21-clean li.news21-footer-li a.news21-footer-a:active { color:gray; text-
 }
 
 #news21-header-popup {
-	background: transparent url('http://assets.news21.com/beta/toolTip_black_arrow.png') no-repeat scroll top center;
+	background: transparent url('http://assets.news21.com/2011/toolTip_black_arrow.png') no-repeat scroll top center;
 	position: absolute;
     display: none;
     z-index: 50;
