@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>NEWS21 AMS JQUERY PLUGIN</title>
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript"></script>
+	<script src="http://cdn.jquerytools.org/1.2.5/full/jquery.tools.min.js"></script>
+	
+	<link rel="stylesheet" href="http://assets.news21.com/2011/news21skin.css" type="text/css" media="screen" />
+	<script type="text/javascript" src="http://assets.news21.com/2011/news21tooltip.js"></script>
+	<script type="text/javascript" src="http://assets.news21.com/2011/news21skin.js"></script>
+	<script type="text/javascript" src="http://assets.news21.com/2011/jquery.news21ams.js"></script>
+
+	<style type="text/css" media="screen">
+		body{margin-top:0px;margin-left:0px;}
+		.content{width:940px; text-align:left;margin:10px 0px 10px 0px;}
+		.code{background-color:#f2e7c9;border:1px solid #999999;padding:5px;color:#333;}
+	</style>
+</head>
+<body>
+<div style="width:100%;" align="center">
+	<div class="content">
+		<h3>News21 Skin : Header & Footer</h3>
+		The News21Skin js & css include files will inject a header and footer into a page. The width of each will be 940px.
+		<div class="code">
+			&lt;link rel="stylesheet" href="http://assets.news21.com/2011/news21skin.css" type="text/css" media="screen" /&gt; 
+			<br/>
+			&lt;script type="text/javascript" src="http://assets.news21.com/2011/news21skin.js"&gt;&lt;/script&gt;
+		</div>
+		<br/>
+		The most basic News21 header div code:
+		<div class="code">
+		&lt;div id="news21-header"&gt;&lt;/div&gt;
+		</div>
+		<br/>
+		Headers come in 3 different styles ... 
+		<ul>
+			<li>Black Background: (Default) includes logo & branding along with search box w/ outline image on black background color</li>
+			<li>Transparent Background: includes logo & branding along with search box w/ outline image but with no background color</li>
+			<li>Pure Background: includes logo & branding along with search box w/out outline image and no background color</li>
+		</ul>
+		Style code used and example below:
+	</div>
+	<div class="content">
+		<div class="code">
+		&lt;div id="news21-header" class="header-black"&gt;&lt;/div&gt;
+		</div>
+	</div>
+	<div id="news21-header" class="national header-black"></div>
+	<div class="content">
+		<div class="code">
+		&lt;div id="news21-header" class="header-transparent"&gt;&lt;/div&gt;
+		</div>
+	</div>
+	<div id="news21-header" class="header-transparent"></div>
+	<div class="content">
+		<div class="code">
+		&lt;div id="news21-header" class="header-pure"&gt;&lt;/div&gt;
+		</div>
+	</div>
+	<div id="news21-header" class="header-pure"></div>
+	
+	<div class="content">
+		The search box uses google search engine ... but in order for the search to be specific to your domain ... you will need to give the header a proper class. 
+		<div class="code">
+		&lt;div id="news21-header" class="arizonastate"&gt;&lt;/div&gt;<br/>
+		&lt;div id="news21-header" class="berkeley"&gt;&lt;/div&gt;<br/>
+		&lt;div id="news21-header" class="columbia"&gt;&lt;/div&gt;<br/>
+		&lt;div id="news21-header" class="maryland"&gt;&lt;/div&gt;<br/>
+		&lt;div id="news21-header" class="northcarolina"&gt;&lt;/div&gt;<br/>
+		&lt;div id="news21-header" class="southerncalifornia"&gt;&lt;/div&gt;<br/>
+		&lt;div id="news21-header" class="syracuse"&gt;&lt;/div&gt;<br/>
+		&lt;div id="news21-header" class="northwestern"&gt;&lt;/div&gt;
+		</div>
+		<br/>
+		Note: you can easily use multiple classes as seen in this example
+		<div class="code">
+		&lt;div id="news21-header" class="columbia header-pure"&gt;&lt;/div&gt;
+		</div>
+	</div>
+	
+	<div class="content">
+		<div class="code">
+		&lt;div id="news21-footer"&gt;&lt;/div&gt;
+		</div>
+	</div>
+	<div id="news21-footer"></div>
+	
+	
+	<br/><br/>
+	
+	<div class="content">
+		<h3>News21 : Republish Story</h3>
+		The republish link requires <a href="http://jquery.com/">jQuery</a> ... click the link below to see example
+		<a href="#" rel="#news21republish_overlay" class="news21republishlink">republish</a>
+	</div>
+	<div id="news21republish_overlay"></div>
+	
+	<br/><br/><br/>
+	
+</div>
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function() {
+		
+		jQuery().news21ams({'api_key':'14e8378b7b806e820ec8f8a4ecc9a156282','ams_url':'http://ams.news21.com/api'});
+		jQuery('a.news21republishlink').click(function() {jQuery.news21ams.getStoryRepublish(193);});
+		
+	});
+</script>
+</body>
+</html>

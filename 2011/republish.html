@@ -1,0 +1,78 @@
+<html>
+<head>
+	<title>NEWS21 REPUBLISH (view the source)</title>
+	
+	<!-- news21skin script includes-->
+	<link rel="stylesheet" href="http://assets.news21.com/2011/news21skin.css" type="text/css" media="screen" />
+	<script type="text/javascript" src="http://assets.news21.com/2011/news21skin.js"></script>
+	
+	<!-- news21skin optional tooltip script include -->
+	<script type="text/javascript" src="http://assets.news21.com/2011/news21tooltip.js"></script>
+	
+	<!-- news21-jqueryams script includes -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"></script>
+	<script src="http://cdn.jquerytools.org/1.2.5/full/jquery.tools.min.js"></script>
+	<script type="text/javascript" src="http://assets.news21.com/2011/jquery.news21ams.js"></script>
+	
+	<!-- for demo page only NOT needed on include -->
+	<style type="text/css" media="screen">
+		body{margin-top:0px;margin-left:0px;}
+		.content{width:940px; text-align:left;margin:10px 0px 10px 0px;}
+		.code{background-color:#f2e7c9;border:1px solid #999999;padding:5px;color:#333;}
+	</style>
+</head>
+<body>
+
+	<div style="width:100%;" align="center">
+	
+		<!-- news21skin header -->
+		<div id="news21-header"></div>
+		
+		<div style="width:100%;" align="center">
+
+			<div class="content">
+				<h3>NEWS21 REPUBLISH</h3>
+				The republish link requires <a href="http://jquery.com/">jQuery</a> and <a href="http://flowplayer.org/tools/index.html">jQuery Tools</a> ... click the link below to see example
+				<br/><br/>
+				<a href="#" rel="#news21republish_overlay" class="news21republishlink">republish</a>
+				<br/><br/>
+				<div class="code">
+					&lt;script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js" type="text/javascript"&gt;&lt;/script&gt;<br/>
+					&lt;script src="http://cdn.jquerytools.org/1.2.5/full/jquery.tools.min.js"&gt;&lt;/script&gt;<br/>
+					&lt;script type="text/javascript" src="http://assets.news21.com/2011/jquery.news21ams.js"&gt;&lt;/script&gt;
+				</div>
+				<br/>
+				Also you will need to initialize the jquery plugin ... please do not use the demo api code! ... ask for a specific on for your site.
+				<br/>
+				In the code below 193 is the story id of the story within the asset management system (<a href="http://ams.news21.com">ams.news21.com</a>)
+				<br/>
+				<div class="code">
+					&lt;script type="text/javascript" charset="utf-8"&gt;<br/>
+						&nbsp;&nbsp;jQuery(document).ready(function() {<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;jQuery().news21ams({'api_key':'14e8378b7b806e820ec8f8a4ecc9a156282','ams_url':'http://ams.news21.com/api'});<br/>
+							&nbsp;&nbsp;&nbsp;&nbsp;jQuery('a.news21republishlink').click(function() {jQuery.news21ams.getStoryRepublish(193);});<br/>
+						&nbsp;&nbsp;});<br/>
+					&lt;/script&gt;
+				</div>
+			</div>
+
+			<br/><br/>
+
+		</div>
+	
+		<!-- news21skin republish overlay -->
+		<div id="news21republish_overlay"></div>
+		
+		<!-- news21skin footer -->
+		<div id="news21-footer"></div>
+		
+	</div>
+	
+	<script type="text/javascript" charset="utf-8">
+		jQuery(document).ready(function() {
+			jQuery().news21ams({'api_key':'14e8378b7b806e820ec8f8a4ecc9a156282','ams_url':'http://ams.news21.com/api'});
+			jQuery('a.news21republishlink').click(function() {jQuery.news21ams.getStoryRepublish(193);});
+		});
+	</script>
+</body>
+</html>
