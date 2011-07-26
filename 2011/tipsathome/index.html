@@ -4,7 +4,7 @@
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <title>Tips@Home</title>
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0b1/jquery.mobile-1.0b1.min.css" />
-    <link rel="apple-touch-startup-image" href="splash_screen_old_iphone.png">
+    <link rel="apple-touch-startup-image" href="splash_screen.jpg">
 	<link rel="apple-touch-icon" href="icon.png">
     <script src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
     <script type="text/javascript" charset="utf-8">
@@ -28,9 +28,18 @@
             margin: 0;
             padding: 3px;
         }
+		div.iphone_install {
+			display: none;
+			font-size: 0.8em;
+		}
     </style> 
     <script type="text/javascript" charset="utf-8">
     $(document).ready(function() {
+	    if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))) {
+            if (("standalone" in window.navigator) && !window.navigator.standalone) {
+                $('.iphone_install').show();
+            }
+        }
         $('select#department_selector').change(function() {
             $('select option:selected').each(function() {
                 var class_selector = 'state_' + $(this).val();
@@ -68,6 +77,9 @@ $('ul.healthdept_list li.'+class_selector).show();
         <h1>Tips@Home</h1>
       </div>
       <div data-role="content" class="main_menu">
+		<div class="iphone_install">
+			<p>Add this app to your phone by tapping the <img src="iphone_add_button.png" height="15px"> button at the bottom of the screen followed by "Add to Home Screen," then press "Add" in the top right hand corner.</p>
+		</div>
         <ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b"> 
     			<li><a href="#findhealthdept">Find Health Depts.</a></li> 
     			<li><a href="#symptoms">Symptoms</a></li> 
