@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>restaurantips</title>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0b1/jquery.mobile-1.0b1.min.css" />
+    <link rel="apple-touch-startup-image" href="espanol_splash_screen.jpg">
+	<link rel="apple-touch-icon" href="icon.png">
+    <script src="http://code.jquery.com/jquery-1.6.1.min.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        $(document).bind("mobileinit", function() {
+              $.mobile.page.prototype.options.addBackBtn = true;
+              $.mobile.page.prototype.options.backBtnText = "Atr&#225;s";
+         });
+    </script>
+    <script src="http://code.jquery.com/mobile/1.0b1/jquery.mobile-1.0b1.min.js"></script>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+    <meta name="apple-mobile-web-app-capable" content="yes"> 
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+    <style type="text/css" media="screen">
+        ul.healthdept_list {
+            margin: 0;
+            padding: 0;
+        }
+        .healthdept_list li {
+            display: none;
+            list-style-type: none;
+            border-bottom: 1px solid #888;
+            margin: 0;
+            padding: 3px;
+        }
+		div.iphone_install {
+			display: none;
+			font-size: 0.8em;
+		}
+    </style> 
+    <script type="text/javascript" charset="utf-8">
+    $(document).ready(function() {
+	    if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))) {
+            if (("standalone" in window.navigator) && !window.navigator.standalone) {
+                $('.iphone_install').show();
+            }
+        }
+        $('select#department_selector').change(function() {
+            $('select option:selected').each(function() {
+                var class_selector = 'state_' + $(this).val();
+                $('ul.healthdept_list li').hide();
+                $('ul.healthdept_list li.'+class_selector).show();
+            });
+        });
+        
+        $('div').live('pageshow', function(event, ui){
+            if ($.mobile.activePage.attr('id') == 'clientes') {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(find_health_dept);
+                };
+            };
+        });
+    });
+    function find_health_dept(position) {
+$.getJSON(
+'http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20geo.placefinder%20where%20text%3D%22'+position.coords.latitude+','+position.coords.longitude+'%22%20and%20gflags%3D%22R%22&format=json', 
+function(data) {
+sc = data['query']['results']['Result'].statecode;
+$('select#department_selector').val(sc).selectmenu("refresh");
+var class_selector = 'state_' + sc;
+$('ul.healthdept_list li').hide();
+$('ul.healthdept_list li.'+class_selector).show();
+}
+);
+}
+    </script>
+    
+        
+  </head>
+  
+  <body>
+    <div data-role="page" id="home">
+      <div data-role="header">
+        <h1>restaurantips</h1>
+      </div>
+      <div data-role="content">
+		<div class="iphone_install">
+			<p>Para descargar esta aplicación a tu celular, oprime <img src="iphone_add_button.png" height="15px">, "Añadir a pantalla de inicio" y después, "Añadir."</p>
+		</div>
+        <ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b"> 
+    			<li><a href="#cu&#225;ndoevitar">Cu&#225;ndo Evitar Trabajar</a></li> 
+    			<li><a href="#manoslimpias">Manos Limpias</a></li> 
+    			<li><a href="#trabajo">En el Trabajo</a></li>
+    			<li><a href="#clientes">Clientes Enfermos</a></li>
+    			<li><a href="#entregas">Entregas y Almacenaje</a></li> 
+    			<li><a href="#temperatura">Temperatura</a></li> 
+    			<li><a href="#cocinar">Cocinar y Servir</a></li> 
+    			<li><a href="#qu&#237;micos">El Uso de los Qu&#237;micos</a></li>
+    			<li><a href="#trapos">Trapos de Limpieza</a></li>
+    			</ul> 
+    	<ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b">
+            <li><a href="#acercade">Acerca de</a></li>
+    	    <li><a href="#fuentes">Fuentes</a></li>
+    	</ul>
+      </div>
+      <div data-role="footer">
+        <h4>News21</h4>
+      </div>
+    </div>
+    
+    <div data-role="page" id="cu&#225;ndoevitar">
+      <div data-role="header">
+        <h1>Cu&#225;ndo Evitar Trabajar</h1>
+      </div>
+      <div data-role="content">
+        <p>No vayas al trabajo si has estado enfermo con diarrea o si has vomitado, y evita trabajar hasta que est&#233;s libre de s&#237;ntomas durante 24 horas.</p> 
+        <p>No trabajes si tienes ictericia (ojos o piel amarillo), o si un m&#233;dico te ha diagnosticado con E. coli O157, hepatitus A, norovirus, o salmonella. Todas estas enfermedades se puede transmitir a trav&#233;s de la comida, y si trabajas podr&#237;as enfermar a tus clientes.</p>
+        <p>Si tienes tos o un resfriado, puedes trabajar pero no debes acercarte a la comida ni equipos de cocina, platos, utensilios o manteler&#237;as que est&#233;n limpios.</p> 
+        <p>Tambi&#233;n, evita tocar platos limpios o comida si tienes fiebre, o si alguien en tu familia ha estado vomitando o enfermo con diarrea.</p> 
+        <p>Siempre informa a tu gerente si est&#225;s enfermo para que te pueda asistir a determinar cu&#225;les trabajos puedes hacer sin riesgo. Tareas seguras podr&#237;an ser sacar la basura, barrer y trapear, limpiar los ba&#241;os y recoger las mesas.</p>
+
+       </div>
+      <div data-role="footer" data-position="fixed">
+        <h4>News21</h4>
+      </div>
+    </div>
+    
+    
+    <div data-role="page" id="manoslimpias">
+      <div data-role="header">
+        <h1>Manos Limpias</h1>
+      </div>
+      <div data-role="content">
+      <h3>Hand Sanitizer</h3>  
+    <p>Lavar las manos con agua tibia y jab&#243;n elimina los pat&#243;genos (las bacterias que causan enfermedades) mejor que usar desinfectantes de base a alcohol. Tener las manos mojadas impide que los desinfectantes sean efectivos. Se puede usar desinfectantes para protecci&#243;n adicional despu&#233;s de lavar y secar bien las manos.</p>
+    <p>L&#225;vate las manos con frecuencia, en particular si acabas de ir al ba&#241;o, toser, estornudar, o si est&#225;s cambiando de trabajar con una comida que todav&#237;a no se ha cocinado a una que ya est&#225; lista para servir.</p> 
+    <p><a href="http://www.health.state.mn.us/divs/eh/food/fs/handwashsp.html">Aprende cu&#225;ndo y c&#243;mo lavarte las manos:</a></p>
+    <p>Siempre l&#225;vate las manos en un lavabo, no en los fregaderos de cocina o limpieza. Despu&#233;s de usar el ba&#241;o, l&#225;vate y s&#233;cate las manos y usa una toalla de papel para abrir y cerrar la puerta. Cierra la puerta del ba&#241;o para evitar contaminaci&#243;n. L&#225;vate y s&#233;cate las manos otra vez en el lavabo en tu &#225;rea de trabajo.</p>
+	<p>Cuando seas interrumpido o dejes de trabajar con una comida para preparar otra, cambia tus guantes desechables. Es especialmente importante cambiar tus guantes cuando dejes de preparar comida todav&#237;a no cocida para trabajar con comida que ya est&#225; lista para servir. Ponte guantes nuevos si se rompen, si se contaminan, o bien cada hora. Nunca debes lavar guantes desechables o usarlos m&#225;s que una sola vez. L&#225;vate las manos antes de ponerte los guantes y despu&#233;s de quitarlos.</p>
+	<p>Informa a tu gerente si tienes alguna lesi&#243;n abierta o infectada para que te pueda ayudar a tomar precauciones contra la contaminaci&#243;n. Si tienes lesiones en las manos o las mu&#241;ecas, t&#225;palas con curitas resistentes al agua y c&#250;brelas completamente con guantes desechables.</p>
+	<p>Mant&#233;n cortas tus u&#241;as para que sea f&#225;cil lavarte las manos. No uses esmalte ni u&#241;as falsas. Podr&#237;an caerse en la comida.</p>
+	<p>Usa guantes desechables, trozos de papel desechable, pinzas u otros utensilios para tocar la comida.</p>
+	
+	<a href="http://www.health.state.mn.us/divs/eh/food/fs/handwash.html">Know when and how to wash your hands on the job</a></p>
+      </div>
+      <div data-role="footer" data-position="fixed">
+        <h4>News21</h4>
+      </div>
+    </div>
+    
+    
+    <div data-role="page" id="trabajo">
+      <div data-role="header" data-position="fixed">
+        <h1>En el Trabajo</h1>
+      </div>
+      <div data-role="content">
+          <p>Comer, beber o usar tobaco cerca de la comida o platos, equipos, utensilios y manteler&#237;as limpios podr&#237;a contaminarlos.</p>
+          <p>Qu&#237;tate tu joyer&#237;a antes de trabajar. Puede llevar pat&#243;genas o caerse en la comida.</p> 
+          <p>Recoge tu cabello  para que no tengas que ajustarlo durante el trabajo, y ponte una gorra o cofia para evitar que pelos se caigan en la comida. Tambi&#233;n, cubre vello corporal o barbas largas.</p> 
+          <p>Cubre tu ropa con un mandil o una chaqueta de chef.</p> 
+          <p>No guardes tu bolsa, abrigo u otras pertenencias cerca de comida, platos, manteler&#237;as ni equipos limpios.</p>  
+          <p>Dejar tus objetos personales en &#225;reas de preparaci&#243;n de comida o servicio podr&#237;a contaminar la comida. Los gerentes deben asignar un lugar seguro donde los trabajadores puedan guardar sus cosas.</p>
+          
+      </div>
+      <div data-role="footer" data-position="fixed">
+        <h4>News21</h4>
+      </div>
+    </div>
+     
+     
+      <div data-role="page" id="clientes">
+      <div data-role="header" data-position="fixed">
+      <h1>Clientes Enfermos</h1>
+     </div>
+      <div data-role="content">
+
+       <p>Si un cliente llama al restaurante para reportar que se enferm&#243; despu&#233;s de comer ah&#237;, avisa al encargado del restaurante. &#201;l o ella debe anotar el nombre y contacto del cliente e informar al departamento de salud.</p>
+      
+     <select name="department_selector" id="department_selector">
+                <option value="" selected="selected">Selecciona tu Estado</option> 
+                <option value="AL">Alabama</option> 
+                <option value="AK">Alaska</option> 
+                <option value="AZ">Arizona</option> 
+                <option value="AR">Arkansas</option> 
+                <option value="CA">California</option> 
+                <option value="CO">Colorado</option> 
+                <option value="CT">Connecticut</option> 
+                <option value="DE">Delaware</option> 
+                <option value="DC">District of Columbia</option> 
+                <option value="FL">Florida</option> 
+                <option value="GA">Georgia</option> 
+                <option value="HI">Hawaii</option> 
+                <option value="ID">Idaho</option> 
+                <option value="IL">Illinois</option> 
+                <option value="IN">Indiana</option> 
+                <option value="IA">Iowa</option> 
+                <option value="KS">Kansas</option> 
+                <option value="KY">Kentucky</option> 
+                <option value="LA">Louisiana</option> 
+                <option value="ME">Maine</option> 
+                <option value="MD">Maryland</option> 
+                <option value="MA">Massachusetts</option> 
+                <option value="MI">Michigan</option> 
+                <option value="MN">Minnesota</option> 
+                <option value="MS">Mississippi</option> 
+                <option value="MO">Missouri</option> 
+                <option value="MT">Montana</option> 
+                <option value="NE">Nebraska</option> 
+                <option value="NV">Nevada</option> 
+                <option value="NH">New Hampshire</option> 
+                <option value="NJ">New Jersey</option> 
+                <option value="NM">New Mexico</option> 
+                <option value="NY">New York</option> 
+                <option value="NC">North Carolina</option> 
+                <option value="ND">North Dakota</option> 
+                <option value="OH">Ohio</option> 
+                <option value="OK">Oklahoma</option> 
+                <option value="OR">Oregon</option> 
+                <option value="PA">Pennsylvania</option> 
+                <option value="RI">Rhode Island</option> 
+                <option value="SC">South Carolina</option> 
+                <option value="SD">South Dakota</option> 
+                <option value="TN">Tennessee</option> 
+                <option value="TX">Texas</option> 
+                <option value="UT">Utah</option> 
+                <option value="VT">Vermont</option> 
+                <option value="VA">Virginia</option> 
+                <option value="WA">Washington</option> 
+                <option value="WV">West Virginia</option> 
+                <option value="WI">Wisconsin</option> 
+                <option value="WY">Wyoming</option>
+            </select>
+            <ul class="healthdept_list">
+                <li class='state_AL'><h3><a href='http://www.adph.org'>Alabama Department of Public Health </a></h3><p>Phone : <a href='tel:1-334-206-5300'>334-206-5300</a></p></li>
+                <li class='state_AK'><h3><a href='http://www.hss.state.ak.us/'>Alaska Department of Health and Social Services</a></h3><p>Phone : <a href='tel:1-907-465-3092'>907-465-3092</a></p></li>
+                <li class='state_AZ'><h3><a href='http://www.hs.state.az.us/ '>Arizona Department of Health Services </a></h3><p>Phone : <a href='tel:1-602-542-1025'>602-542-1025</a></p></li>
+                <li class='state_AZ'><h3><a href='http://www.maricopa.gov/publichealth/'>Maricopa County Department of Public Health</a></h3><p>Phone : <a href='tel:1-602-506-6900'>602-506-6900</a></p></li>
+                <li class='state_AR'><h3><a href='http://www.healthyarkansas.com/'>Arkansas Department of Health </a></h3><p>Phone : <a href='tel:1-501-280-4364'>501-280-4364</a></p></li>
+                <li class='state_CA'><h3><a href='http://www.cdph.ca.gov/Pages/Default.aspx'>California Department of Public Health </a></h3><p>Phone : <a href='tel:1-916-558-1784'>916-558-1784</a></p></li>
+                <li class='state_CA'><h3><a href='http://www.longbeach.gov/health/'>City of Long Beach Department of Health and Human Services </a></h3><p>Phone : <a href='tel:1-562-570-4499'>562-570-4499</a></p></li>
+                <li class='state_CA'><h3><a href='http://publichealth.lacounty.gov/'>Los Angeles County Department of Public Health</a></h3><p>Phone : <a href='tel:1-888-397-3993'>888-397-3993</a></p></li>
+                <li class='state_CA'><h3><a href='http://www.ci.pasadena.ca.us/PublicHealth/'>City of Pasadena Public Health Department </a></h3><p>Phone : <a href='tel:1-626-744-6000'>626-744-6000</a></p></li>
+                <li class='state_CA'><h3><a href='http://www.sdcounty.ca.gov/deh/food/foodcomplaints.html'>San Diego County Health Department </a></h3><p>Phone : <a href='tel:1-858-505-6814'>858-505-6814</a></p></li>
+                <li class='state_CA'><h3><a href='http://www.sfdph.org/dph/default.asp'>San Francisco Department of Public Health </a></h3><p>Phone : <a href='tel:1-415-252-3800'>415-252-3800</a></p></li>
+                <li class='state_CO'><h3><a href='http://www.cdphe.state.co.us/opp/locallist.html'>Colorado Department of Public Health and Environment</a></h3><p>Phone : <a href='tel:1-303-692-2350'>303-692-2350</a></p></li>
+                <li class='state_CO'><h3><a href='http://jeffco.us/health/index.htm'>Jefferson County Department of Health and Environment</a></h3><p>Phone : <a href='tel:1-303-232-6301'>303-232-6301</a></p></li>
+                <li class='state_CT'><h3><a href='http://www.dph.state.ct.us'>Connecticut Department of Public Health</a></h3><p>Phone : <a href='tel:1-860-509-8000'>860-509-8000</a></p></li>
+                <li class='state_DE'><h3><a href='http://dhss.delaware.gov/dhss/dph/index.html'>Delaware Division of Public Health</a></h3><p>Phone : <a href='tel:1-302-744-4700'>302-744-4700</a></p></li>
+                <li class='state_DC'><h3><a href='http://www.dchealth.dc.gov/doh/site/default.asp?dohNav=|33110|'>District of Columbia Department of Health</a></h3><p>Phone : <a href='tel:1-202-442-5955'>202-442-5955</a></p></li>
+                <li class='state_FL'><h3><a href='http://www.doh.state.fl.us'>Florida Department of Health</a></h3><p>Phone : <a href='tel:1-850-245-4250'>850-245-4250</a></p></li>
+                <li class='state_FL'><h3><a href='http://www.dadehealth.org/'>Miami-Dade County Health Department</a></h3><p>Phone : <a href='tel:1-305-324-2400'>305-324-2400</a></p></li>
+                <li class='state_FL'><h3><a href='http://www.orchd.com/'>Orange County Health Department </a></h3><p>Phone : <a href='tel:1-407-858-1400'>407-858-1400</a></p></li>
+                <li class='state_GA'><h3><a href='http://health.state.ga.us/'>Georgia Division of Public Health</a></h3><p>Phone : <a href='tel:1-404-657-2700'>404-657-2700</a></p></li>
+                <li class='state_HI'><h3><a href='http://www.hawaii.gov/health'>Hawaii Department of Health</a></h3><p>Phone : <a href='tel:1-808-586-4400'>808-586-4400</a></p></li>
+                <li class='state_ID'><h3><a href='http://www2.state.id.us/dhw'>Idaho Department of Health and Welfare</a></h3><p>Phone : <a href='tel:1-208-334-6996'>208-334-6996</a></p></li>
+                <li class='state_IL'><h3><a href='http://www.idph.state.il.us'>Illinois Department of Public Health</a></h3><p>Phone : <a href='tel:1-217-782-4977'>217-782-4977</a></p></li>
+                <li class='state_IL'><h3><a href='http://www.cookcountypublichealth.org/'>Cook County Department of Public Health </a></h3><p>Phone : <a href='tel:1-708-633-4000'>708-633-4000</a></p></li>
+                <li class='state_IL'><h3><a href='http://www.dupagehealth.org/'>Dupage County Health Department </a></h3><p>Phone : <a href='tel:1-630-682-7400'>630-682-7400</a></p></li>
+                <li class='state_IL'><h3><a href='http://www.maconcountyhealth.org/'>Macon County Health Department, Decatur</a></h3><p>Phone : <a href='tel:1-217-423-6988'>217-423-6988</a></p></li>
+                <li class='state_IN'><h3><a href='http://www.IN.gov/isdh/index.htm'>Indiana State Department of Health</a></h3><p>Phone : <a href='tel:1-317-233-1325'>317-233-1325</a></p></li>
+                <li class='state_IA'><h3><a href='http://idph.state.ia.us'>Iowa Department of Health</a></h3><p>Phone : <a href='tel:1-515-281-7689'>515-281-7689</a></p></li>
+                <li class='state_KS'><h3><a href='http://www.kdhe.state.ks.us'>Kansas Department of Health and Environment</a></h3><p>Phone : <a href='tel:1-785-296-1500'>785-296-1500</a></p></li>
+                <li class='state_KY'><h3><a href='http://chfs.ky.gov/dph/'>Kentucky Department for Public Health</a></h3><p>Phone : <a href='tel:1-800-372-2973'>800-372-2973</a></p></li>
+                <li class='state_LA'><h3><a href='http://www.oph.dhh.state.la.us '>Louisiana Department Health and Hospitals, Office of Public Health</a></h3><p>Phone : <a href='tel:1-225-342-9500'>225-342-9500</a></p></li>
+                <li class='state_ME'><h3><a href='http://www.maine.gov/dhhs/'>Maine Department of Health and Human Services</a></h3><p>Phone : <a href='tel:1-207-287-3707'>207-287-3707</a></p></li>
+                <li class='state_MD'><h3><a href='http://www.dhmh.state.md.us'>Maryland Department of Health and Mental Hygiene</a></h3><p>Phone : <a href='tel:1-410-767-6500'>410-767-6500</a></p></li>
+                <li class='state_MD'><h3><a href='http://www.co.mo.md.us/services/hhs/'>Montgomery County Department of Health and Human Services </a></h3><p>Phone : <a href='tel:1-410-767-6500'>410-767-6500</a></p></li>
+                <li class='state_MA'><h3><a href='http://www.mass.gov/?pageID=eohhs2homepage&L=1&L0=Home&sid=Eeohhs2'>Massachusetts Department of Public Health</a></h3><p>Phone : <a href='tel:1-617-573-1600'>617-573-1600</a></p></li>
+                <li class='state_MA'><h3><a href='http://worcesterhealth.org/'>Worcester County Health Department</a></h3><p>Phone : <a href='tel:1-410-632-1100'>410-632-1100</a></p></li>
+                <li class='state_MI'><h3><a href='http://www.michigan.gov/mdch'>Michigan Department of Public Health</a></h3><p>Phone : <a href='tel:1-517-373-3740'>517-373-3740</a></p></li>
+                <li class='state_MI'><h3><a href='http://www.waynecounty.com/hhs_ph.htm'>Wayne County Public Health Department</a></h3><p>Phone : <a href='tel:1-313-224-0286'>313-224-0286</a></p></li>
+                <li class='state_MN'><h3><a href='http://www.health.state.mn.us'>Minnesota Department of Public Health</a></h3><p>Phone : <a href='tel:1-651-201-5000'>651-201-5000</a></p></li>
+                <li class='state_MS'><h3><a href='http://www.msdh.state.ms.us/msdhsite/index.cfm'>Mississippi Department of Health</a></h3><p>Phone : <a href='tel:1-601-576-7400'>601-576-7400</a></p></li>
+                <li class='state_MO'><h3><a href='http://www.dhss.mo.gov/'>Missouri Department of Health</a></h3><p>Phone : <a href='tel:1-573-751-6400'>573-751-6400</a></p></li>
+                <li class='state_MT'><h3><a href='http://www.dphhs.mt.gov/'>Montana Department of Public Health & Human Services</a></h3><p>Phone : <a href='tel:1-406-444-4141'>406-444-4141</a></p></li>
+                <li class='state_NE'><h3><a href='http://www.hhs.state.ne.us/'>Nebraska Department of Health</a></h3><p>Phone : <a href='tel:1-402-471-3121'>402-471-3121</a></p></li>
+                <li class='state_NV'><h3><a href='http://health.nv.gov/'>Nevada State Health Division</a></h3><p>Phone : <a href='tel:1-775-684-4200'>775-684-4200</a></p></li>
+                <li class='state_NV'><h3><a href='http://www.southernnevadahealthdistrict.org/'>Southern Nevada Health District</a></h3><p>Phone : <a href='tel:1-702-759-1000'>702-759-1000</a></p></li>
+                <li class='state_NH'><h3><a href='http://www.dhhs.state.nh.us '>New Hampshire Department of Health and Human Services</a></h3><p>Phone : <a href='tel:1-603-271-4589'>603-271-4589</a></p></li>
+                <li class='state_NJ'><h3><a href='http://www.state.nj.us/health/'>New Jersey Department of Health and Senior Services</a></h3><p>Phone : <a href='tel:1-609-292-7837 '>609-292-7837 </a></p></li>
+                <li class='state_NM'><h3><a href='http://www.health.state.nm.us/'>New Mexico Department of Health</a></h3><p>Phone : <a href='tel:1-505-827-2613'>505-827-2613</a></p></li>
+                <li class='state_NM'><h3><a href='http://www.bernco.gov/environmental-health-office/'>Bernalillo County Environmental Health Office</a></h3><p>Phone : <a href='tel:1-505-314-0310'>505-314-0310</a></p></li>
+                <li class='state_NY'><h3><a href='http://www.health.state.ny.us/'>New York State Department of Health</a></h3><p>Phone : <a href='tel:1-800-458-1158'>800-458-1158</a></p></li>
+                <li class='state_NY'><h3><a href='http://www.nyc.gov/html/doh/html/home/home.shtml'>New York City Department of Health and Mental Hygiene</a></h3><p>Phone : <a href='tel:1-212-788-4975'>212-788-4975</a></p></li>
+                <li class='state_NC'><h3><a href='http://www.ncpublichealth.com/'>North Carolina Department of Public Health</a></h3><p>Phone : <a href='tel:1-919-707-5000'>919-707-5000</a></p></li>
+                <li class='state_ND'><h3><a href='http://www.health.state.nd.us'>North Dakota Department of Health</a></h3><p>Phone : <a href='tel:1-701-328-2372'>701-328-2372</a></p></li>
+                <li class='state_OH'><h3><a href='http://www.odh.ohio.gov/'>Ohio Department of Health</a></h3><p>Phone : <a href='tel:1- 614-995-5599'> 614-995-5599</a></p></li>
+                <li class='state_OK'><h3><a href='http://www.health.state.ok.us/'>Oklahoma State Department of Health</a></h3><p>Phone : <a href='tel:1-405-271-5600'>405-271-5600</a></p></li>
+                <li class='state_OR'><h3><a href='http://www.ohd.hr.state.or.us/'>Oregon Department of Human Resources</a></h3><p>Phone : <a href='tel:1-971-673-0451 '>971-673-0451 </a></p></li>
+                <li class='state_OR'><h3><a href='http://www.co.harney.or.us/healthdepartment.html'>Harney County Health Department</a></h3><p>Phone : <a href='tel:1-541-573-2271'>541-573-2271</a></p></li>
+                <li class='state_PA'><h3><a href='http://www.dsf.health.state.pa.us/health/site/default.asp'>Pennsylvania Department of Health</a></h3><p>Phone : <a href='tel:1-877-724-3258'>877-724-3258</a></p></li>
+                <li class='state_PA'><h3><a href='http://www.phila.gov/health/'>City of Philadelphia Public Health</a></h3><p>Phone : <a href='tel:1-215-685-7494'>215-685-7494</a></p></li>
+                <li class='state_RI'><h3><a href='http://www.health.state.ri.us/'>Rhode Island Department of Health</a></h3><p>Phone : <a href='tel:1-401-222-5960'>401-222-5960</a></p></li>
+                <li class='state_SC'><h3><a href='http://www.dhhs.state.sc.us'>South Carolina Department of Health and Environmental Control</a></h3><p>Phone : <a href='tel:1-888-549-0820'>888-549-0820</a></p></li>
+                <li class='state_SD'><h3><a href='http://www.state.sd.us/doh/index.htm '>South Dakota Department of Health</a></h3><p>Phone : <a href='tel:1-605-773-3361'>605-773-3361</a></p></li>
+                <li class='state_TN'><h3><a href='http://www.state.tn.us/health'>Tennessee Department of Health</a></h3><p>Phone : <a href='tel:1-615-741-3111'>615-741-3111</a></p></li>
+                <li class='state_TX'><h3><a href='http://www.dshs.state.tx.us/'>Texas Department of State Health Services </a></h3><p>Phone : <a href='tel:1-512-458-7111'>512-458-7111</a></p></li>
+                <li class='state_TX'><h3><a href='http://www.harriscountyhealth.com/'>Harris County Public Health & Environmental Services</a></h3><p>Phone : <a href='tel:1-713-439-6000'>713-439-6000</a></p></li>
+                <li class='state_UT'><h3><a href='http://www.health.utah.gov'>Utah Department of Health</a></h3><p>Phone : <a href='tel:1-801-538-6101'>801-538-6101</a></p></li>
+                <li class='state_UT'><h3><a href='http://www.slvhealth.org/'>Salt Lake Valley Health Department</a></h3><p>Phone : <a href='tel:1-801-468-2750'>801-468-2750</a></p></li>
+                <li class='state_VT'><h3><a href='http://healthvermont.gov/'>Vermont Department of Health</a></h3><p>Phone : <a href='tel:1-802-863-7200'>802-863-7200</a></p></li>
+                <li class='state_VA'><h3><a href='http://www.vdh.state.va.us/'>Virginia Department of Health</a></h3><p>Phone : <a href='tel:1-804-864-7473'>804-864-7473</a></p></li>
+                <li class='state_WA'><h3><a href='http://www.doh.wa.gov/'>Washington State Department of Health</a></h3><p>Phone : <a href='tel:1-800-525-0127'>800-525-0127</a></p></li>
+                <li class='state_WA'><h3><a href='http://www.kingcounty.gov/healthservices/health.aspx'>Public Health - Seattle & King County</a></h3><p>Phone : <a href='tel:1-206-296-4600'>206-296-4600</a></p></li>
+                <li class='state_WV'><h3><a href='http://www.wvidep.org/'>West Virginia Bureau of Public Health: Division of Infectious Disease Epidemiology</a></h3><p>Phone : <a href='tel:1-800-423-1271'>800-423-1271</a></p></li>
+                <li class='state_WI'><h3><a href='http://www.dhfs.state.wi.us'>Wisconsin Department of Health Services</a></h3><p>Phone : <a href='tel:1-608-266-1865'>608-266-1865</a></p></li>
+                <li class='state_WY'><h3><a href='http://www.health.wyo.gov/'>Wyoming Department of Health</a></h3><p>Phone : <a href='tel:1-866-571-0944'>866-571-0944</a></p></li>
+            </ul>
+       
+       </div>
+      <div data-role="footer" data-position="fixed">
+        <h4>News21</h4>
+      </div>
+    </div>
+
+    
+    <div data-role="page" id="entregas">
+      <div data-role="header">
+        <h2>Entregas y Almacenaje</h2>
+      </div>
+      <div data-role="content">
+      <h4>Entregas</h4>
+      
+          <p>Cuando se entrega comida a tu restaurante, asegura que ninguna caja o lata est&#233; abierta, rota, oxidada o hinchada. No aceptes comida que llege en envases da&#241;ados.</p>
+          <p>Comprueba con un term&#243;metro que las entregas de comida fr&#237;a est&#233;n la temperatura adecuada. Entregas de huevos y leche deben estar a 45 grados Farenheit (7.2 cent&#237;grados) o menos. Otras comidas fr&#237;as deben estar a 41 grados Farenheit (5 cent&#237;grados) o menos a su llegada al restaurante. Pon un term&#243;metro entre dos envases para medir la temperatura. La comida congelada se debe entregar congelada. Comida que se reparte caliente debe ser al menos 140 grados Farenheit (60 cent&#237;grados), y hay que mantenerla as&#237;.</p>
+          <p>No apiles cajas de comida. Una comida se podr&#237;a derramar y contaminar a otra. No uses cajas m&#225;s que una sola vez. Contaminaci&#243;n de los contenidos previos se podr&#237;a transmitir a la nueva comida.</p> 
+          
+      
+     <h4>Almacenaje</h4>
+          <p>Guarda comida solamente en envases hechos para alimentos. Es peligroso guardar comida en bolsas de basura, basureros y recipientes que originalmente eran para productos qu&#237;micos, incluso el jab&#243;n, porque podr&#237;an contaminar la comida.</p> 
+          <p>Siempre pon carnes, mariscos, pescados y aves en los estantes m&#225;s bajos del refrigerador para que no se derramen en otras comidas. Las comidas que se cocinan a temperaturas m&#225;s altas--como la carne y el pollo--se debe guardar debajo de comidas que se cocinan a temperaturas menores, como los mariscos.</p>
+          
+      </div>
+      <div data-role="footer" data-position="fixed">
+        <h4>News21</h4>
+      </div>
+    </div>
+    
+    
+    <div data-role="page" id="temperatura">
+      <div data-role="header">
+        <h1>Temperatura</h1>
+      </div>
+      <div data-role="content">
+          <p>Mant&#233;n comidas riesgosas a menos de 41 grados Farenheit (5 cent&#237;grados) o m&#225;s de 140 grados Farenheit (60 cent&#237;grados).</p> 
+          <p>As&#237; la comida siempre estar&#225; demasiado fr&#237;a para permitir que los pat&#243;genos crezcan, o tan caliente que se mueran.</p>
+          <p>Algunas comidas riesgosas son verduras de hoja, carne, pescado, mariscos, aves, huevos, productos l&#225;cteos, germinados, tofu, melones cortados, ajo o hierbas embotellados en el aceite y arroz, frijoles, pasta, papas o verduras cocidos.</p>
+          <p>Las comidas riesgosas pueden estar a temperatura ambiente por hasta dos horas durante la preparaci&#243;n de comida.</p>
+          <p>Mientras cocinas, saca y prepara ingredientes riesgosos poco a poco para evitar el crecimiento de pat&#243;genos. Si una comida riesgosa ha estado a temperatura ambiente por m&#225;s que dos horas, o si no sabes por cu&#225;nto tiempo ha estado as&#237;, des&#233;chala. Comerla podr&#237;a causar enfermedad.</p>
+                
+        <p><h4>Enfriar Comida</h4></p> 
+          <p>Usando un term&#243;metro para electrodom&#233;sticos, verifica que la temperatura del refrigerador sea de 41 grados (5 cent&#237;grados) o menos. Si usas un ba&#241;o de hielo para mantener fr&#237;a una comida, llena el fregadero con hielo hasta que est&#233; al mismo nivel de la comida dentro del recipiente. Asegura que la temperatura de la comida es de 41 grados Farenheit (5 cent&#237;grados) o menos. La temperatura de los congeladores debe ser de 0 grados Farenheit (-17.7 cent&#237;grados) o menos.</p>
+          <p>La manera m&#225;s segura de descongelar comida es ponerla en el refrigerador hasta que no est&#233; congelada. Siempre debes poner la comida que se est&#225; descongelando en los estantes m&#225;s bajos del refrigerador para evitar que se derrame y contamine a otras comidas. Tambi&#233;n puedes descongelar comida en el fregadero. Dejando correr el agua, sumerge la comida en un ba&#241;o de agua de 70 grados Farenheit (21 cent&#237;grados) o menos.</p>
+          <p>Para enfriar comida con un ba&#241;o de hielo, llena un fregadero con hielo hasta que est&#233; al mismo nivel de la comida adentro del recipiente y revu&#233;lvela.</p>
+          <p>La temperatura de la comida debe bajar de 140 grados Farenheit (60 cent&#237;grados)--que es la temperatura que se recomienda para alimentos calientes--a 70 grados Farenheit (21 cent&#237;grados) dentro de dos horas y a 41 grados Farnheit (5 cent&#237;grados) dentro de seis horas.</p>
+          <p>Otro m&#233;todo de enfriar la comida es dividirla entre recipientes poco profundos y guardarlos en el estante m&#225;s alto del refrigerador donde ninguna otra comida pueda contaminarlos. No tapes los recipientes hasta que la comida llegue a 41 grados Farenheit (5 cent&#237;grados).</p> 
+          <p>No uses el hielo m&#225;s que una vez. Arriesga la salud del consumidor el poner hielo que ya se us&#243; para enfriar comida o equipos en bebidas u otros alimentos.</p> 
+
+       <p><h4>Cocinando</h4></p> 
+       <p>Cocina la comida hasta las temperaturas que matan pat&#243;genos:</p>
+          <ul>
+            <p>
+             <li>
+       			Carne de res y ternera:
+                  <ul>
+                      <li>Molida: 160 grados Farenheit (71 cent&#237;grados)</li>
+                      <li>Bistec y carne rostizada, t&#233;rmino medio: 160 grados Farenheit (71 cent&#237;grados)</li>
+                      <li>Bistec y carne rostizada, medio crudo: 145 grados Farenheit (62.7 cent&#237;grados)</li>
+                  </ul>
+                  </p>
+              </li>
+             
+             
+              <p>
+              <li>
+                  Pollo y pavo:
+                  <ul>
+                      <li>Pechuga: 165 grados Farenheit (73.8 cent&#237;grados)</li>
+                      <li>Molida, relleno y guisados: 165 grados Farenheit (73.8 cent&#237;grados)</li>
+                      <li>Rostizado completo, piernas, muslitos y alas: 165 grados Farenheit (73.8 cent&#237;grados)</li>                    
+                  </ul>
+              </li>
+              </p>
+              
+              
+               <p>
+              <li>
+                  Huevos:
+                  <ul>
+                      <li>160 grados Farenheit (71 cent&#237;grados)</li>
+                  </ul>
+              </li>
+              </p>
+              
+ 			<p>
+              <li>
+                  Pescados y mariscos: 
+                  <ul>
+                      <li>145 grados Farenheit (62.7 cent&#237;grados)</li>
+                  </ul>
+              </li>
+              </p>
+
+			<p>
+              <li>
+                  Cordero:
+                  <ul>
+                      <li>Molido: 160 grados Farenheit (71 cent&#237;grados)</li>
+                      <li>Bistec y carne rostizada, t&#233;rmino medio: 160 grados Farenheit (71 cent&#237;grados)</li>
+                      <li>Bistec y carne rostizada, medio crudo: 145 grados Farenheit (62.7 cent&#237;grados)</li>
+                  </ul>
+              </li>
+              </p>
+
+			<p>
+              <li>
+                  Frutas y verduras cocidas:
+                  <ul>
+                      <li>135 grados Farenheit (57.2 cent&#237;grados)</li>
+                  </ul>
+              </li>
+              </p>
+
+			<p>
+              <li>
+                  Sobras (de cualquier alimento):
+                  <ul>
+                      <li>165 grados Farenheit (73.8 cent&#237;grados)</li>
+                  </ul>
+              </li>
+              </p>
+ 
+
+			<p>
+              <li>
+                 Cerdo: 
+                  <ul>
+                      <li>Chuletas, asada, molida, costillas: 160 grados Farenheit (71 cent&#237;grados)</li>
+                      <li>Jam&#243;n cocido, recalentado: 140 grados Farenheit (60 cent&#237;grados)</li>
+                  </ul>
+              </li>
+              </p>
+
+	
+	<p>Para tomar una temperatura precisa, inserta el term&#243;metro en el centro de la comida.</p>
+	<p>Limpia los term&#243;metros despu&#233;s de cada uso, y cal&#237;bralos frequentemente.</p>
+	<p>Cuando cocinas comida o recalentas sobras en el microondas, asegura con un term&#243;metro que el alimento llega a 165 grados Farenheit (73.8 cent&#237;grados).</p>
+	<p>Como los microondas no cocinan de manera uniforme, hay que tomar la temperatura en varias partes de la comida.</p> 
+	<p>No uses calentadores de buffet para recalentar comida. Est&#225;n dise&#241;ados para mantener la temperatura de comida, no aumentarla.</p>
+	<p>Tapa los alimentos que quieres mantener calientes, y revu&#233;lvelos para distribiur calor.</p>
+	<p>Nunca debes mezclar comida caliente con comida fr&#237;a.</p>
+	<p><a href="http://www.fsis.usda.gov/pdf/sp_kitchen_thermometers.pdf">Aprende usar diferentes tipos de term&#243;metros</a></p>
+ 
+       </div>
+      <div data-role="footer" data-position="fixed">
+        <h4>News21</h4>
+      </div>
+    </div>
+    
+    
+    <div data-role="page" id="cocinar">
+      <div data-role="header">
+        <h1>Cocinar y Servir</h1>
+      </div>
+      <div data-role="content">
+          <p>Siempre l&#225;vate las manos despu&#233;s de preparar comidas crudas, en particular carne, pollo, pescado y huevos.</p>
+          <p>Hay que seguir dos pasos para eliminar g&#233;rmenes de tu &#225;rea de trabajo despu&#233;s de cocinar comidas crudas: l&#237;mpialo con trapos limpios, agua y jab&#243;n, y despu&#233;s con un desinfectante de cocina.</p>
+          <p>Lava los trapos de limpieza antes de usarlos otra vez.</p> 
+          <p>Asigna distintas tablas de picar y un &#225;rea especial para la preparaci&#243;n de carnes, aves, pescados o mariscos crudos.</p>
+          <p>Los gerentes pueden ordenar las tablas de picar por color, seg&#250;n el tipo de comida, por ejemplo, comidas crudas y comidas que no se cocinar&#225;n antes de servir.<p>
+          <p>Informa a tu gerente si encuentras que las tablas de picar est&#233;n muy rayadas o manchadas. Eso quiere decir que es hora de comprar nuevas tablas. Los pat&#243;genos podr&#237;an sobrevivir en las grietas de las tablas y contaminar comida.</p>
+          <p>Enfr&#237;a ensaladas y s&#225;ndwiches hechos con ingredientes de temperatura ambiete a 41 grados Farenheit (5 cent&#237;grados) dentro de cuatro horas de su preparaci&#243;n. Lo m&#225;s es seguro hacer ensaladas y s&#225;ndwiches con ingredientes fr&#237;os.</p>
+          <p>Siempre sirve segundas porciones en platos y vasos limpios. Botanas como el pan y los totopos no se pueden servir m&#225;s que una vez, ya que pueden estar contaminados.</p>
+          <p>Asegurate de que no hay objetos que podr&#237;an caerse en la comida en el &#225;rea de preparaci&#243;n, tales como grapas y alfileres del tabl&#243;n de anuncios o pedazos de vidrio roto. Mira con atenci&#243;n a la comida que preparas y sirves.</p>     
+       </div>
+      <div data-role="footer" data-position="fixed">
+        <h4>News21</h4>
+      </div>
+    </div>
+    
+    
+    
+    <div data-role="page" id="qu&#237;micos">
+      <div data-role="header">
+        <h1>El Uso de los Qu&#237;micos</h1>
+      </div>
+      <div data-role="content">
+      
+        <p>Cubre los basureros, desecha cajas usadas, tapa y guarda la comida lo m&#225;s pronto posible y limpia los derrames inmediatamente para evitar atraer bichos, cucharachas y ratones que transmiten enfermedades.</p>
+        <p>Si tu restaurante ya tiene problemas de plagas, no apliques pesticidas. Contrata un profesional para hacerlo cuando ya has guardado todo la comida, los platos y los utensilios.</p>
+		<p>Guarda todos los productos qu&#237;micos, incluyendo desinfectantes y jabones, en estantes bajos donde no se pueden derramar sobre platos, comida o &#225;reas de preparaci&#243;n y almacenaje.</p>
+        <p><a href="http://www.health.state.mn.us/divs/eh/food/fs/safesansp.html">Aprende c&#243;mo lavar y desinfectar platos</a></p> 
+    
+     </div>
+      <div data-role="footer" data-position="fixed">
+        <h4>News21</h4>
+      </div>
+    </div>
+    
+    
+     <div data-role="page" id="trapos">
+      <div data-role="header">
+        <h1>Trapos de Limpieza</h1>
+      </div>
+      <div data-role="content">
+          <p>Usa trapos distintos para diferentes tareas de limpieza. Los gerentes pueden ordenar trapos por color seg&#250;n sus usos, por ejemplo, recoger mesas y el bar, la preparaci&#243;n de comida y la limpieza de los ba&#241;os.</p> 
+          <p>Instalar una lavadora y una secadora en el restaurante puede ser &#250;til. As&#237;, los gerentes pueden ense&#241;ar a los empleados a cambiar sus trapos de limpieza despu&#233;s de cada tarea, o bien cada 15 minutos, y reducir el riesgo de contaminaci&#243;n sin preocuparse por los costos del lavado contratado. Los gerentes pueden asignar un recipiente como "limpio," y llenarlo con desinfectante, agua y trapos nuevos. Otro recipiente lleno de agua y detergente (para quitar manchas) ser&#237;a para trapos sucios.</p> 
+		  <p>Si tienes que usar los trapos m&#225;s de una vez, verifica que el desinfectante en los recipientes para trapos est&#233; en la concentraci&#243;n adecuada y c&#225;mbialo si no es as&#237;.</p>
+		  <p>Revisa la concentraci&#243;n cada cuatro horas, o cuando el agua en los recipientes parece sucio.</p>
+		  <p>Pedacitos de comida en agua sucia puedan absorber los qu&#237;micos desinfectantes, haciendo que ya no sirvan para matar g&#233;rmenes.</p>
+		  <p>Para medir la concentraci&#243;n, mete una tira de ensayo en el recipiente, s&#225;calo y comparar su color a la tabla de colores en el envase de las tiras.</p>
+		  <p>Se recomienda que el cloro est&#233; entre 50 y 100 partes por mill&#243;n; entre 12.5 y 25 partes por mill&#243;n para el yodo, y 200 partes por mill&#243;n para compuestos de amonio cuaternario (tambi&#233;n llamados "quats").</p>
+		  
+           
+        </div>
+      <div data-role="footer" data-position="fixed">
+        <h4>News21</h4>
+      </div>
+    </div>
+    
+    
+     <div data-role="page" id="acercade">
+      <div data-role="header" data-position="fixed">
+        <h1>Acerca de</h1>
+      </div>
+      <div data-role="content">
+         
+          <p><a href="http://news21.com/">News21</a> es una iniciativa de doce destactadas universidades de investigaci&#243;n que cuenta con el apoyo de dos fundaciones – the <a href="http://carnegie.org/">La Corporaci&#243;n Carnegie de Nueva York (the Carnegie Corporation of New York)</a> y <a href="http://www.knightfoundation.org/">La Fundaci&#243;n de John S. y James L. Knight (the John S. and James L. Knight Foundation)</a>. Enfatiza el estudio y la pr&#225;ctica de periodismo innovativo.</p>
+          <p>Durante el verano 2011, becarios de cinco universidades reportaron sobre la seguridad alimenticia en los Estados Unidos desde salas de prensa en  <a href="http://cronkite.asu.edu/">la Escuela de Periodismo Walter Cronkite de la Universidad Estatal de Arizona (Arizona State's Walter Cronkite School of Journalism and Mass Communication)</a> y <a href="http://www.journalism.umd.edu/">el Colegio de Periodismo Philip Merrill de la Universidad de Maryland (Maryland's Philip Merrill College of Journalism)</a>.</p>
+         
+           <h4>Acerca de la Aplicaci&#243;n</h4>
+           <p><h4>Investigaci&#243;n y reportaje:</h4> Rachel Albin</p>
+          <p><h4>Administraci&#243;n de proyectos:</h4> Joanne Ingram</p>
+		  <p><h4>Traducci&#243;n:</h4>Rachel Albin</p>
+		  <p><h4>Edici&#243;n:</h4>Rafael Martinez-Feria</p>
+          <p><h4>Desarrollo Web:</h4>Mark Ng</p>
+          <p><h4>Gr&#225;ficos:</h4>Kyle Bruggeman</p>
+          
+        </div>
+      <div data-role="footer" data-position="fixed">
+        <h4>News21</h4>
+      </div>
+    </div>
+    
+   
+     <div data-role="page" id="fuentes">
+      <div data-role="header">
+        <h1>Fuentes</h1>
+      </div>
+      <div data-role="content">
+      
+      
+<p><li><a href="http://www.cdc.gov/spanish/">Centros para el Control y la Prevenci&#243;n de Enfermedades (U.S. Centers for Disease Control and Prevention)</a></li></p>  
+<p><li><a href="http://www.clemson.edu/extension/hgic/food/food_safety/handling/hgic3587.htm">El Servicio de Extensi&#243;n Cooperativa de la Universidad de Clemson (Clemson University Cooperative Extension)</a></li></p>   
+<p><li><a href="http://www.fda.gov/Food/FoodSafety/RetailFoodProtection/FoodCode/FoodCode2009/default.htm">El C&#243;digo de Alimentos de la FDA (la Administraci&#243;n de Medicamentos y Alimentos) (FDA Food Code 2009)</a></li></p>
+<p><li>Food Safety and Inspection Service, <a href="http://www.fsis.usda.gov/en_espanol">"Estar Listo Versus Inocuo" ("Keep Food Safe! Food Safety Basics")</a></li></p>
+<p><li>FSIS press release, <a href="http://www.fsis.usda.gov/en_espanol">El USDA Revisa las Temperaturas Recomendadas para Cocinar Todos los Cortes Enteros de Carnes, Incluyendo Cerdo, a 145 ˚F (62.8 ˚C)" ("USDA Revises Recommended Cooking Temperature for All Whole Cuts of Meat, Including Pork, to 145 °F")</a></li></p>
+<p><li>L&#237;nea directa de carnes rojas y de aves del USDA, <a href='tel:1-888-674-6854'>888-674-6854</a></li></p> 
+<p><li><a href="http://www.foodsafety.gov/about/state/">Foodsafety.gov</a></li></p>
+<p><li>Minnesota Administrative Rules, <a href="https://www.revisor.mn.gov/rules/">Minnesota Office of the Revisor of Statutes</a></li></p>
+<p><li><a href="http://www.health.state.mn.us/divs/eh/food/code/index.html">El C&#243;digo de Alimentos de Minnesota (Minnesota Food Code)</a></li></p>
+<p><li><a href="http://www.health.state.mn.us/foodsafety/business/index.html">"Proveer Comida Segura es un Buen Negocio: La Seguridad Alimenticia en Restaurantes, Caf&#233;s, Cafeter&#237;as Escolares, y Otros Establecimientos de Alimentos y Bebidas" ("Safe Food is Good Business: Food Safety in Restaurants, Cafes, School Kitchens, and other Food and Beverage Establishments"</a></li></p>
+<p><li><a href="http://www.health.state.mn.us/foodsafety/basics.html">"Los Principios B&#225;sicos de la Seguridad Alimenticia: C&#243;mo Prevenir Enfermedades Transmitidas por Alimentos" ("Food Safety Basics: Preventing Foodborne Illness)</a></li></p>
+<p><li>Martin Pemberton, instructor certificado del programa ServSafe, <a href="http://www.hospitalitytrainingcenter.com/">Centro de Instrucci&#243;n para Personal de Hospitalidad (Hospitality Careers Training Center)</a></li></p>
+<p><li>Dr. Robert W. Powitz, sanitario forense privado, <a href="http://www.sanitarian.com/RWPowitz.html">R.W. Powitz &amp; Assoc.</a></li></p>
+<p><li>Manual para personal de restaurantes en el Estado de Washington, <a href="http://www.doh.wa.gov/ehp/food/industryresources.html">"La Seguridad Alimentaria es Asunto de Todos" ("Food Safety is Everybody’s Business: Your Guide to Preventing Foodborne Illness")</a></li></p>
+<p><li>Joseph M. Graham, REHS, <a href="http://www.doh.wa.gov/ehp/food">Divisi&#243;n de Salud Ambiental, Programa de Seguridad Alimentaria (Division of Environmental Health Food Safety Program)</a></li></p>
+   
+         
+      </div>
+      <div data-role="footer" data-position="fixed">
+        <h4>News21</h4>
+      </div>
+    </div>
+
+  </body>
+</html>
