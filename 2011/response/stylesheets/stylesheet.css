@@ -1,3 +1,56 @@
+#tooltip {
+	position: absolute;
+	width: 20em;
+	z-index: 3000;
+	border: 1px solid #111;
+	background-color: #fff;
+	padding: 5px;
+	opacity: 0.95;
+}
+#tooltip h3, #tooltip div { 
+	margin: 0; 
+	font-size: 1em;
+	font-weight: normal;
+}
+
+div#deck div.deck_tile {
+	display: block;
+	width: 49%;
+	float: left;
+}
+p.legend img{
+	vertical-align: text-bottom;
+}
+p.legend {
+	position: relative;
+	top: 1em;
+}
+p.legend span{
+	visibility: hidden;
+}
+div#disease_descriptions {
+	height: 8em;
+}
+div#disease_descriptions div{
+	display: none;
+}
+div#disease_descriptions div img{
+	float: left;
+	padding: 5px;
+	padding-top: 0;
+}
+img.nrlegend{
+	left: 50px;
+}
+div#disease_descriptions div p {
+	font-size: 0.9em;
+	line-height: 1.3em;
+}
+div#disease_descriptions div#explanation {
+	display: block;
+	height: 5em;
+}
+
 #table_fu{
   width: 900px;
   margin-left: auto;
@@ -15,6 +68,8 @@
     font-size: 24px;
     font-weight: bold;
     font-family: Palatino Linotype,Book Antiqua,Palatino,serif;
+		width: 69%;
+		float: left;
   }
   #table_fu div{
     margin-bottom: 14px;

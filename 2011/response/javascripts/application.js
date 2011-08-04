@@ -53,4 +53,11 @@ $(document).ready(function(){
     table.tablesorterPager({container: $("#pager"), positionFixed: false, size: perPage});
   }
 
+	$('thead th').click(function(event) {
+		$('div#disease_descriptions div').hide();
+		$('#'+$(this).text().replace(/[ .-]/g,'')).show();
+	});
+	$('tbody tr td img').tooltip({
+		showURL: false,
+		});
 });
