@@ -93,6 +93,7 @@ div#disease_descriptions div#explanation {
   #table_fu div#filter{
     float:left;
     width:30%;
+		text-align: right;
   }
   
     #table_fu #data{
@@ -138,6 +139,16 @@ div#disease_descriptions div#explanation {
         margin-top: 0.7em;
         font-weight:bold;
       }
+			th.state{
+				width: 13em;
+			}
+			th.state p {
+				visibility: hidden;
+			}
+			img#occurrence {
+				position: relative;
+				left: 14em;
+			}
       #table_fu th.headerSortDown{
         background: #ccc url(../images/th_arrow_asc.gif) no-repeat 100% 75%;
       }
