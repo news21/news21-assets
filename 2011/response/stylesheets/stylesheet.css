@@ -18,6 +18,9 @@ div#deck div.deck_tile {
 	width: 49%;
 	float: left;
 }
+div#deck {
+	clear: both;
+}
 p.legend img{
 	vertical-align: text-bottom;
 }
