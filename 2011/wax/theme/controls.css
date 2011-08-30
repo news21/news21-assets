@@ -87,7 +87,7 @@ a.zoomer {
 
 	.wax-tooltip .close,
 	.wax-fullscreen,
-	.zoomer {
+	{
 	  text-indent:-9999px;
 	  overflow:hidden;
 	  display:block;
@@ -99,7 +99,7 @@ a.zoomer {
 
 	.wax-tooltip .close:active,
 	.wax-fullscreen:active,
-	.zoomer:active {
+ 	{
 	  margin-top:1px;
 	  border-color:#bbb;
 	  background-color:#ddd;
