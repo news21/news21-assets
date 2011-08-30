@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <title>Wax Manual</title>
+  <script src='ender.js' type='text/javascript'></script>
+  <script src='../ext/modestmaps.min.js' type='text/javascript'></script>
+  <script src='../dist/wax.mm.js' type='text/javascript'></script>
+  <script src='lib/showdown.js' type='text/javascript'></script>
+  <script src='lib/shjs.js' type='text/javascript'></script>
+  <script src='lib/sh_javascript.min.js' type='text/javascript'></script>
+  <script src='site.js' type='text/javascript'></script>
+  <link href='lib/shjs.css' rel='stylesheet' type='text/css' />
+  <link href='../ext/leaflet.css' rel='stylesheet' type='text/css' />
+  <!--[if lte IE 8]><link rel="stylesheet" href="../ext/leaflet.ie.css" /><![endif]-->
+  <link href='../theme/controls.css' rel='stylesheet' type='text/css' />
+  <link href='site.css' rel='stylesheet' type='text/css' />
+</head>
+<body>
+<div class='page'>
+<div class='navigation'><ul></ul></div>
+
+<pre class='md'>
+# Understanding Grids
+
+Grids look cool because the lowest point that the represent, `0`, is
+represented by ` `, a space. Enter characters like `$` and `a` to see
+how single characters are translated to indexes by the Wax UTFGrid system.
+
+<div class='section'>
+<style type='text/css'>
+.ui-1 {
+  padding:50px;
+  font-size:40px;
+}
+.ui-1 input {
+  font-size:40px;
+}
+</style>
+<div id='decoding-grids' class='map'>
+  <div class='ui-1'>
+    <input type='text' maxlength='1' size='1' id='char' /> = 
+    <span id='result'></span>
+  </div>
+</div>
+<pre class='sh_javascript run'>
+var gi = new wax.GridInstance();
+
+$('#char').keyup(function() {
+  $('#result').text(
+    gi.resolveCode(
+      $(this).val().charCodeAt(0)
+    ) || 0
+  );
+});
+</pre>
+
+
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{
+    "name": "wax",
+    "version": "3.0.5",
+    "description": "Tools for improving web maps.",
+    "author": {
+        "name": "MapBox",
+        "url": "http://mapbox.com/",
+        "email": "info@mapbox.com"
+    },
+    "contributors": [
+        "Tom MacWright <macwright@gmail.com>",
+        "Young Hahn <young@developmentseed.org>",
+        "Will White <will@developmentseed.org>"
+    ],
+    "licenses": [{
+      "type": "BSD"
+    }],
+    "devDependencies": {
+      "jshint": "0.2.3",
+      "uglify-js": "1.0.x",
+      "docco": "0.3.x",
+      "banner": "0.0.x"
+    }
+}

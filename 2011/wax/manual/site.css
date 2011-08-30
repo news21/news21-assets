@@ -1,0 +1,239 @@
+body {
+  margin:0px;
+  padding:0px;
+  font:normal 16px/25px Georgia,serif;
+  background:#eee url(noise.png);
+  color:#000;
+  }
+
+a { color:#b64c4c; }
+
+/**
+ * Navigation
+ */
+.navigation {
+  width:160px;
+  padding:10px 19px 10px 20px;
+  position:fixed;
+  top:0px;
+  bottom:0px;
+  border-left:1px solid #eee;
+  left:50%;
+  margin-left:280px;
+  font:13px/20px Georgia,serif;
+  }
+
+.navigation a {
+  color:#999;
+  transition:color .5s;
+  -moz-transition:color .5s;
+  -webkit-transition:color .5s;
+  }
+
+.navigation:hover a { color:#000; }
+
+.navigation ul li,
+.navigation ul {
+  list-style-type:none;
+  margin:0px;
+  padding:0px;
+  }
+
+.navigation ul li a { text-decoration:none; }
+.navigation ul li a:hover { text-decoration:underline; }
+
+.navigation ul li.H1 { margin-top:10px; }
+.navigation ul li.H2 { padding-left:10px; }
+.navigation ul li.H3 {
+  padding-left:20px;
+  font-style:italic;
+  }
+
+/**
+ * Page wrapper
+ */
+div.page {
+  margin:0px auto;
+  border-left:1px solid #eee;
+  border-right:1px solid #eee;
+  padding:20px 239px 20px 19px;
+  width:700px;
+  background:#fff;
+  }
+
+/**
+ * Code/map sections
+ */
+div.section {
+  margin:0px -20px 25px;
+  position:relative;
+  padding:9px 9px 9px 19px;
+  border:1px solid #f4f4f4;
+  border-left:1px solid #eee;
+  background:#f8f8f8 url(noise.png);
+  }
+
+div.section * { margin:0px; }
+div.section .map ~ pre { min-height:220px; }
+
+div.map {
+  position:absolute !important;
+  width:240px;
+  height:120px;
+  right:-1px !important;
+  bottom:-1px !important;
+  border:1px solid #ccc;
+  }
+
+div.wax-fullscreen-map {
+  position:fixed !important;
+  border:0px;
+  }
+
+pre.hide {
+  display:none;
+  }
+
+div.dark { background-color:#222; }
+
+div.section .attribution {
+  float:right;
+  clear:right;
+  font-size:10px;
+  line-height:15px;
+  text-decoration:none;
+  font-style:italic;
+  color:#666;
+  padding:0px 5px;
+  }
+
+div.section .widget {
+  position:absolute;
+  right:-1px;
+  bottom:120px;
+  clear:both;
+  width:230px;
+  font-size:11px;
+  line-height:15px;
+  margin:0px 0px 0px auto;
+  border:1px solid #ddd;
+  background:#fff;
+  padding:5px;
+  }
+
+/**
+ * Paragraph markers
+ */
+.md a.para,
+.md a.api {
+  position:absolute;
+  left:-40px;
+  top:2px;
+  width:20px;
+  height:20px;
+  font-size:13px;
+  line-height:20px;
+  background:#ccc;
+  color:#fff;
+  text-align:center;
+  text-decoration:none;
+  border-radius:5px 0px 0px 5px;
+  -moz-border-radius:5px 0px 0px 5px;
+  -webkit-border-radius:5px 0px 0px 5px;
+  -moz-transition:background-color .5s;
+  -webkit-transition:background-color .5s;
+  }
+
+.md a.api {
+  top:25px;
+  -moz-transition:background-color .5s;
+  -webkit-transition:background-color .5s;
+  }
+
+
+/**
+ * Prose/text styles
+ */
+h1:hover a.para,
+h2:hover a.para,
+h3:hover a.api,
+h3:hover a.para { background:#333; }
+
+h1, h2, h3, h4, h5, h6, p {
+  position:relative;
+  margin:0px 0px 25px;
+  padding:0px;
+  font-weight:normal;
+  }
+
+h2, h3 { font-size:20px; }
+
+pre {
+  margin:0px;
+  font: normal 12px/20px 'Andale Mono',Monaco,Consolas,'Lucida Console',monospace;
+  }
+
+code {
+  font-size:12px;
+  font-family:'Andale Mono',Monaco,Consolas,'Lucida Console',monospace;
+  background:#fbe7cc;
+  padding:1px 3px;
+  }
+
+.md p > img {
+  display:block;
+  margin:0px auto;
+  border:1px solid #ccc;
+  }
+
+/**
+ * Interaction, control styles
+ */
+div.wax-tooltip {
+  left:0px;
+  top:0px;
+  padding:5px;
+  font:11px/15px Arial,sans-serif;
+  background-color:#fff;
+  color:#000;
+  z-index:9999999999;
+  opacity:1;
+  -moz-transition:opacity .5s;
+  -webkit-transition:opacity .5s;
+  }
+
+div.wax-fade { opacity:0; }
+
+div.wax-tooltip img {
+  width:40px;
+  margin:0px;
+  }
+
+a.wax-fullscreen {
+  position:absolute;
+  top:5px;
+  left:5px;
+  z-index:99999;
+  }
+
+  /** Teaching section **/
+.ui-2 {
+  padding:20px;
+}
+#grids-display {
+  background-color:#D8E7DA;
+  border:1px dotted #A7B6A9;
+  border-spacing:0;
+  border-collapse:collapse;
+}
+#grids-display pre {
+  font: normal 8px/8px 'Andale Mono',Monaco,Consolas,'Lucida Console',monospace;
+  width:8px;
+}
+#keys-display span, #data-display ul li {
+  font: normal 10px/10px 'Andale Mono',Monaco,Consolas,'Lucida Console',monospace;
+  padding:2px;
+  margin:2px;
+  overflow:scroll;
+  background-color:#D5E1E2;
+}

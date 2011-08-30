@@ -1,0 +1,766 @@
+<!DOCTYPE html >
+<html>
+<head>
+  <meta charset='utf-8'/>
+  <title>Wax Manual</title>
+  <script src='ender.js' type='text/javascript'></script>
+  <script src='../ext/modestmaps.min.js' type='text/javascript'></script>
+  <script src='../ext/OpenLayers.js' type='text/javascript'></script>
+  <script src='../ext/leaflet.js' type='text/javascript'></script>
+  <script src='http://maps.google.com/maps/api/js?sensor=false' type='text/javascript' ></script>
+  <script src='../dist/wax.mm.js' type='text/javascript'></script>
+  <script src='../dist/wax.ol.js' type='text/javascript'></script>
+  <script src='../dist/wax.leaf.js' type='text/javascript'></script>
+  <script src='../dist/wax.g.js' type='text/javascript'></script>
+  <script src='lib/showdown.js' type='text/javascript'></script>
+  <script src='lib/shjs.js' type='text/javascript'></script>
+  <script src='lib/sh_javascript.min.js' type='text/javascript'></script>
+  <script src='site.js' type='text/javascript'></script>
+  <link href='lib/shjs.css' rel='stylesheet' type='text/css' />
+  <link href='../ext/leaflet.css' rel='stylesheet' type='text/css' />
+  <!--[if lte IE 8]><link rel="stylesheet" href="../ext/leaflet.ie.css" /><![endif]-->
+  <link href='../theme/controls.css' rel='stylesheet' type='text/css' />
+  <link href='site.css' rel='stylesheet' type='text/css' />
+</head>
+<body>
+<div class='page'>
+<div class='navigation'><ul></ul></div>
+
+<pre class='md'>
+# Wax 3.x
+
+Wax is a collection of extras and tools that make it easier to publish 
+custom maps on any website. It's an extension of 
+[different mapping APIs](#comparison-of-mapping-libraries) including Modest Maps, OpenLayers and
+the Google Maps API client.
+
+## Downloads
+
+- [Wax (3.0.4)](https://github.com/mapbox/wax/tarball/v3.0.4)
+- [Previous releases](https://github.com/mapbox/wax/downloads) on GitHub
+- [Get the source](https://github.com/mapbox/wax) directly from the GitHub repo
+
+See the instructions below for each mapping API ([Modest Maps](#modest-maps),
+[Leaflet](#leaflet), [Google Maps](#google-maps), [OpenLayers](#openlayers))
+to include Wax in your project.
+
+## Upgrading to 3.x+
+
+*Wax 3.x contains important updates to the Wax API. Please see the
+[CHANGELOG.md](https://github.com/mapbox/wax/blob/master/CHANGELOG.md) for more
+information.*
+
+## Intro to Web Maps
+
+Assuming that you've been designing maps with [TileMill](http://tilemill.com/) or
+another design tool, and  have gotten them up on a server for your usage,
+what's next? It's actually  quite simple to get to the next step: your basic
+ingredients are
+
+* A map server, like [TileStream](https://github.com/mapbox/tilestream)
+* A Javascript API, like [Modest Maps](https://github.com/stamen/modestmaps-js)
+* Your website
+
+The mapping server serves up **tiles** of rendered data - tiles being 256 pixel
+square images covering some of the world. Here's a tile of Europe from the
+[World Light tileset](http://mapbox.com/tileset/world-light).
+
+![Europe](http://a.tile.mapbox.com/1.0.0/world-light/2/2/2.png)
+
+## TileJSON
+
+The Wax API makes use of [TileJSON](https://github.com/mapbox/tilejson).
+TileJSON is a format that contains metadata and information necessary for using
+a tileset.
+
+To start you'll need to know the URL of the tileset you want to use. Most
+tilesets follow the convention of ending in `/{z}/{x}/{y}.[image format]`
+where `{z}` is the *zoom level*, `{x}` is the *x coordinate* and `{y}` is
+the *y coordinate*. TileJSON represents tileset URLs using these placeholders
+so that a tile at any coordinate can be requested.
+
+The URL of the tile above is `http://a.tile.mapbox.com/1.0.0/world-light/2/2/2.png`. By inference we can write the TileJSON needed to use the World Light tileset:
+
+<div class='section'>
+<pre class='sh_javascript'>
+{
+  "version": "1.0.0",
+  "scheme": "tms",
+  "tiles" ["http://a.tile.mapbox.com/1.0.0/world-light/{z}/{x}/{y}.png"]
+}
+</pre>
+</div>
+
+- The `version` key declares that we are implementing version `1.0.0` of the
+  TileJSON spec.
+- The `scheme` key describes the coordinate system used for the tiles. MapBox
+  tilesets currently use the scheme `tms`.
+- The `tiles` key contains an array of URLs from which tiles can be requested.
+
+There are quite a few mapping APIs, but at their core, they're doing the same
+sort of thing - adding these tiles to a page and managing them so that the
+map seems like a continuous world instead of little squares. We'll start off with
+**Modest Maps** because it's lightweight and fast.
+
+# Modest Maps
+
+The first step is to download and include the necessary Javascript code to
+make your map work. We'll also include a CSS file to start rolling with style:
+
+- `wax/ext/modestmaps.min.js` contains the Modest Maps library.
+- `wax/dist/wax.mm.js` contains the Wax controls and integration code for
+  Modest Maps.
+- `wax/theme/controls.css` contains default styles for controls. You can always
+  swap in your own later on.
+
+<div class='section'>
+<pre>
+&lt;html&gt;
+&lt;head&gt;
+  &lt;script src='wax/ext/modestmaps.min.js' type='text/javascript'&gt;&lt;/script&gt;
+  &lt;script src='wax/dist/wax.mm.js' type='text/javascript'&gt;&lt;/script&gt;
+  &lt;link href='wax/theme/controls.css' rel='stylesheet' type='text/css' /&gt;
+  ...
+</pre>
+</div>
+
+Wax has a custom Modest Maps provider that can display tilesets described
+by the TileJSON format at `wax.mm.connector`.
+
+<div class='section'>
+<div id='modestmaps-setup' class='map'></div>
+<a class='attribution' href='http://mapbox.com/tileset/world-light'>World Light</a>
+
+<pre class='sh_javascript run'>
+var tilejson = {
+  tilejson: '1.0.0',
+  scheme: 'tms',
+  tiles: ['http://a.tiles.mapbox.com/mapbox/1.0.0/world-light/{z}/{x}/{y}.png']
+};
+// Alias com.modestmaps to mm. This isn't necessary -
+// just nice for shorter code.
+var mm = com.modestmaps;
+// Set up a map in a div with the id 'modestmaps-setup'
+var m = new mm.Map('modestmaps-setup',
+  // Use Wax's connector to add a new custom layer
+  new wax.mm.connector(tilejson),
+  // And it'll be 240px by 120px
+  new mm.Point(240,120));
+
+// Center it on the United States, at zoom level 2.
+m.setCenterZoom(new mm.Location(39, -98), 2);
+</pre>
+</div>
+
+## Controls
+
+### Interaction
+
+The interaction control adds quite a bit of logic to the map, adding
+interactivity - mouse hovers and clicks - to layers that support it, like those
+made with [TileMill](http://tilemill.com/) and the interactive
+[UTFGrid section](https://github.com/mapbox/mbtiles-spec/blob/master/1.1/utfgrid.md)
+of the [MBTiles spec](https://github.com/mapbox/mbtiles-spec).
+
+The interaction control takes a parameter, `callbacks`, that has the
+default value of `new wax.tooltip()` - the default tooltip library that comes
+with wax. Any other library that implements the same interface
+(see `tooltips.js`) can be passed into the callbacks parameter.
+<div class='section'>
+<div id='modestmaps-interaction' class='map'></div>
+<a class='attribution' href='http://mapbox.com/tileset/geography-class'>Geography Class</a>
+<pre class='sh_javascript run'>
+var tilejson = {
+  tilejson: '1.0.0',
+  scheme: 'tms',
+  tiles: ['http://a.tiles.mapbox.com/mapbox/1.0.0/geography-class/{z}/{x}/{y}.png'],
+  grids: ['http://a.tiles.mapbox.com/mapbox/1.0.0/geography-class/{z}/{x}/{y}.grid.json'],
+  formatter: function(options, data) { return data.NAME }
+};
+var mm = com.modestmaps;
+var m = new mm.Map('modestmaps-interaction',
+  new wax.mm.connector(tilejson),
+  new mm.Point(240,120));
+wax.mm.interaction(m, tilejson);
+m.setCenterZoom(new mm.Location(39, -98), 1);
+</pre>
+</div>
+
+
+
+
+### Mobile
+
+TODO
+
+<div class='section'>
+<div id='modestmaps-mobile' class='map dark'></div>
+<a class='attribution' href='http://mapbox.com/tileset/world-glass'>World Glass</a>
+<pre class='sh_javascript run'>
+var tilejson = {
+  tilejson: '1.0.0',
+  scheme: 'tms',
+  tiles: ['http://a.tiles.mapbox.com/mapbox/1.0.0/geography-class/{z}/{x}/{y}.png'],
+  grids: ['http://a.tiles.mapbox.com/mapbox/1.0.0/geography-class/{z}/{x}/{y}.grid.json'],
+  formatter: function(options, data) { return data.NAME }
+};
+var mm = com.modestmaps;
+var m = new mm.Map('modestmaps-mobile',
+  new wax.mm.connector(tilejson),
+  new mm.Point(240,120),
+  [new mm.MouseHandler(), new mm.TouchHandler()]);
+wax.mm.interaction(m, tilejson);
+wax.mm.mobile(m, tilejson, {
+  bodyDraw: function(body) { body.bgColor = '#000000' }
+});
+m.setCenterZoom(new mm.Location(39, -98), 2);
+</pre>
+</div>
+
+### Fullscreen
+
+The fullscreen control adds a link to the map that assigns a
+fullscreen class to the map, which makes it fill the page.
+
+You'll see that this control adds a fullscreen link to the map, and that it's
+a bit ugly right now. Until Wax's theming improves, keep in mind that its
+styling, which is contained in `theme/controls.css`, is completely optional
+and you can replace it with your own.
+
+<div class='section'>
+<div id='modestmaps-fullscreen' class='map'></div>
+<a class='attribution' href='http://mapbox.com/tileset/world-light'>World Light</a>
+<pre class='sh_javascript run'>
+var tilejson = {
+  tilejson: '1.0.0',
+  scheme: 'tms',
+  tiles: ['http://a.tiles.mapbox.com/mapbox/1.0.0/world-light/{z}/{x}/{y}.png']
+};
+var mm = com.modestmaps;
+var m = new mm.Map('modestmaps-fullscreen',
+  new wax.mm.connector(tilejson),
+  new mm.Point(240,120));
+wax.mm.fullscreen(m, tilejson).appendTo(m.parent);
+m.setCenterZoom(new mm.Location(39, -98), 2);
+</pre>
+</div>
+
+### Zoomer
+
+A simple zoom control offering zoom in &amp; out buttons. It creates links and
+appends them to the map, adding classes like `zoomin`, `zoomout`, and
+`zoomdisabled` to help you style them.
+
+<div class='section'>
+<div id='modestmaps-zoomer' class='map dark'></div>
+<a class='attribution' href='http://mapbox.com/tileset/world-glass'>World Glass</a>
+<pre class='sh_javascript run'>
+var tilejson = {
+  tilejson: '1.0.0',
+  scheme: 'tms',
+  tiles: ['http://a.tiles.mapbox.com/mapbox/1.0.0/world-glass/{z}/{x}/{y}.png']
+};
+var mm = com.modestmaps;
+var m = new mm.Map('modestmaps-zoomer',
+  new wax.mm.connector(tilejson),
+  new mm.Point(240,120));
+wax.mm.zoomer(m, tilejson).appendTo(m.parent);
+m.setCenterZoom(new mm.Location(39, -98), 2);
+</pre>
+</div>
+
+### Zoombox
+
+Control that allows you to zoom with the shift-key and a draggable box.
+
+<div class='section'>
+<div id='modestmaps-zoombox' class='map dark'></div>
+<a class='attribution' href='http://mapbox.com/tileset/world-glass'>World Glass</a>
+<pre class='sh_javascript run'>
+var tilejson = {
+  tilejson: '1.0.0',
+  scheme: 'tms',
+  tiles: ['http://a.tiles.mapbox.com/mapbox/1.0.0/world-glass/{z}/{x}/{y}.png']
+};
+var mm = com.modestmaps;
+var m = new mm.Map('modestmaps-zoombox',
+  new wax.mm.connector(tilejson),
+  new mm.Point(240,120));
+wax.mm.zoombox(m, tilejson);
+m.setCenterZoom(new mm.Location(39, -98), 2);
+</pre>
+</div>
+
+### Boxselector
+
+A control that lets you highlight a region of the map with the
+shift-key and a draggable box, and calls a callback when you release the mouse.
+It's useful for tools that need the selection of certain areas of the world.
+
+<div class='section'>
+<div id='modestmaps-boxselector' class='map dark'></div>
+<a class='attribution' href='http://mapbox.com/tileset/blue-marble-topo-bathy-jul'>Blue Marble Topography & Bathymetry (July)</a>
+<pre class='sh_javascript run'>
+var tilejson = {
+  tilejson: '1.0.0',
+  scheme: 'tms',
+  tiles: ['http://a.tiles.mapbox.com/mapbox/1.0.0/blue-marble-topo-bathy-jul/{z}/{x}/{y}.png']
+};
+var mm = com.modestmaps;
+var m = new mm.Map('modestmaps-boxselector',
+  new wax.mm.connector(tilejson),
+  new mm.Point(240,120));
+wax.mm.boxselector(m, tilejson, {
+  callback: function(coords) {
+    $('#boxselector-text').text(
+      coords.map(function(c) {
+        return c.lat + ',' + c.lon;
+      }).join(' - '));
+  }
+});
+m.setCenterZoom(new mm.Location(39, -98), 2);
+</pre>
+<div class='widget'>Selection: <span id='boxselector-text'></span></div>
+</div>
+
+### Pointselector
+
+A control that enables users to add points to a map by clicking the map, and
+then clicking those points to remove them. Like the boxselector control, it
+calls a callback with the current map data, and also exposes an API,
+`addLocation(com.modestmaps.Location)`, if you wish to add points on pageload.
+
+<div class='section'>
+<div id='modestmaps-pointselector' class='map dark'></div>
+<a class='attribution' href='http://mapbox.com/tileset/blue-marble-topo-bathy-jul'>Blue Marble Topography & Bathymetry (July)</a>
+<pre class='sh_javascript run'>
+var tilejson = {
+  tilejson: '1.0.0',
+  scheme: 'tms',
+  tiles: ['http://a.tiles.mapbox.com/mapbox/1.0.0/blue-marble-topo-bathy-jul/{z}/{x}/{y}.png']
+};
+var mm = com.modestmaps;
+var m = new mm.Map('modestmaps-pointselector',
+  new wax.mm.connector(tilejson),
+  new mm.Point(240,120))
+wax.mm.pointselector(m, tilejson, {
+  callback: function(coords) {
+    $('#pointselector-text').text(
+      coords.join(' - '))
+  }
+});
+m.setCenterZoom(new mm.Location(39, -98), 2);
+</pre>
+<div class='widget'>Points: <span id='pointselector-text'></span></div>
+</div>
+
+### Legend
+
+Display legend information on the map. This internally creates the legend,
+and then you can add it to a map by chaining `.appendTo(map.parent)`.
+
+<div class='section'>
+<div id='modestmaps-legend' class='map'></div>
+<a class='attribution' href='http://mapbox.com/tileset/geography-class'>Geography Class</a>
+<pre class='sh_javascript run'>
+var tilejson = {
+  tilejson: '1.0.0',
+  scheme: 'tms',
+  tiles: ['http://a.tiles.mapbox.com/mapbox/1.0.0/geography-class/{z}/{x}/{y}.png'],
+  legend: 'Geography Class by MapBox'
+};
+var mm = com.modestmaps;
+var m = new mm.Map('modestmaps-legend',
+  new wax.mm.connector(tilejson),
+  new mm.Point(240,120));
+wax.mm.legend(m, tilejson).appendTo(m.parent);
+m.setCenterZoom(new mm.Location(39, -98), 2);
+</pre>
+</div>
+
+### Hash
+
+Save the map position to the URL so that links hit the map in the same state as
+the initial user.
+
+By default, this control uses [pushState](https://developer.mozilla.org/en/DOM/Manipulating_the_browser_history),
+a feature found in modern webbrowsers, to give you the history of the map without
+changing the page URL. You can use traditional hashes (`#/0/0/etc`) by
+specifying `manager: wax.mm.locationHash` in its options object.
+
+<div class='section'>
+<div id='modestmaps-hash' class='map'></div>
+<a class='attribution' href='http://mapbox.com/tileset/natural-earth-2'>Natural Earth II</a>
+<pre class='sh_javascript run'>
+var mm = com.modestmaps;
+var tilejson = {
+  tilejson: '1.0.0',
+  scheme: 'tms',
+  tiles: ['http://a.tiles.mapbox.com/mapbox/1.0.0/natural-earth-2/{z}/{x}/{y}.png']
+};
+var m = new mm.Map('modestmaps-hash',
+  new wax.mm.connector(tilejson),
+  new mm.Point(240,120));
+wax.mm.hash(m, tilejson, {
+  defaultCenter: new mm.Location(39, -98),
+  defaultZoom: 4,
+  manager: wax.mm.pushState
+});
+</pre>
+</div>
+
+### Attribution
+
+Adds a container capable of displaying arbitrary HTML to the map. Useful for
+citing data sources.
+
+<div class='section'>
+<div id='modestmaps-attribution' class='map'></div>
+<pre class='sh_javascript run'>
+var tilejson = {
+  tilejson: '1.0.0',
+  scheme: 'tms',
+  tiles: ['http://a.tiles.mapbox.com/mapbox/1.0.0/geography-class/{z}/{x}/{y}.png'],
+  attribution: '&copy; MapBox'
+};
+var mm = com.modestmaps;
+var m = new mm.Map('modestmaps-attribution',
+  new wax.mm.connector(tilejson),
+  new mm.Point(240,120));
+wax.mm.attribution(m, tilejson).appendTo(m.parent);
+m.setCenterZoom(new mm.Location(39, -98), 2);
+</pre>
+</div>
+
+
+
+
+
+
+### Bandwidth Detection
+
+This control adapts maps to low-bandwidth conditions. By default, it requests
+a test tile to determine speed, but accepts options that allow you to subsitute
+your own detection method. This method only works on **composited tiles** - that is,
+combinations of tilesets with the characteristic `,` between their tileset
+names.
+
+Accepts an options object with keys:
+
+* `auto`: default true, if false the control will not test bandwidth
+* `jpg`: the low-quality version of JPEG files. Default `.jpg70`.
+* `png`: the low-quality version of PNG files. Default `.png128`.
+
+<div class='section'>
+<div id='modestmaps-bw' class='map dark'></div>
+<pre class='sh_javascript run'>
+var tilejson = {
+  tilejson: '1.0.0',
+  scheme: 'tms',
+  tiles: ['http://a.tiles.mapbox.com/mapbox/1.0.0/blue-marble-topo-jul,world-bank-borders-ar/{z}/{x}/{y}.png']
+};
+var mm = com.modestmaps;
+var m = new mm.Map('modestmaps-bw',
+  new wax.mm.connector(tilejson),
+  new mm.Point(240,120),
+  [new mm.MouseHandler(), new mm.TouchHandler()]);
+var bw = wax.mm.bwdetect(m, {
+  png: '.png32'
+});
+document.getElementById('trigger-low').onclick = function() {
+  bw.bw(0); return false;
+};
+document.getElementById('trigger-high').onclick = function() {
+  bw.bw(1); return false;
+};
+m.setCenterZoom(new mm.Location(39, -98), 2);
+</pre>
+<a id='trigger-low'>low quality</a>
+<a id='trigger-high'>high quality</a>
+</div>
+
+## Layering
+
+Modest Maps natively supports a single map layer at a time, unlike OpenLayers, 
+which has a flexible baselayer/overlay system. [TileStream Hosting](http://mapbox.com/#/tilestream)
+supports compositing of layers server-side, which is far more performant than
+layering client-side.
+
+# Leaflet
+
+[Leaflet](http://leaflet.cloudmade.com/index.html) is a new mapping library written by
+Vladimir Agafonkin at CloudMade that delivers much of the interface of OpenLayers, but
+with higher performance and a slimmer profile.
+
+- `wax/ext/leaflet.js` contains the core Leaflet library.
+- `wax/ext/leaflet.css` contains the CSS styling for Leaflet.
+- `wax/dist/wax.leaf.js` containsthe Wax controls and integration code for
+  Leaflet.
+
+<div class='section'>
+<pre>
+&lt;html&gt;
+&lt;head&gt;
+  &lt;script src='wax/ext/leaflet.js' type='text/javascript'&gt;&lt;/script&gt;
+  &lt;script src='wax/dist/wax.leaf.js' type='text/javascript'&gt;&lt;/script&gt;
+  &lt;link href='wax/ext/leaflet.css' rel='stylesheet' type='text/css' /&gt;
+  ...
+</pre>
+</div>
+
+Wax has a custom Leaflet tile layer that can display tilesets described by
+the TileJSON format at `wax.leaf.connector`.
+
+<div class='section'>
+<div id='leaflet-simple' class='map'></div>
+<a class='attribution' href='http://mapbox.com/tileset/geography-class'>Geography Class</a>
+<pre class='sh_javascript run'>
+var tilejson = {
+  tilejson: '1.0.0',
+  scheme: 'tms',
+  tiles: ['http://a.tiles.mapbox.com/mapbox/1.0.0/geography-class/{z}/{x}/{y}.png'],
+  grids: ['http://a.tiles.mapbox.com/mapbox/1.0.0/geography-class/{z}/{x}/{y}.grid.json'],
+  formatter: function(options, data) { return data.NAME }
+};
+var map = new L.Map('leaflet-simple')
+  .addLayer(new wax.leaf.connector(tilejson))
+  .setView(new L.LatLng(51.505, -0.09), 1);
+wax.leaf.interaction(map, tilejson);
+</pre>
+</div>
+
+# Google Maps
+
+The Google Maps API V3 is supported by Wax.
+
+- Include the Google Maps API V3 according to the [API documentation](http://code.google.com/apis/maps/documentation/javascript/tutorial.html#Loading_the_Maps_API).
+- `wax/dist/wax.g.js` contains the Wax controls and integration code for
+  Google Maps.
+- `wax/theme/controls.css` contains default styles for controls. You can always
+  swap in your own later on.
+
+<div class='section'>
+<pre>
+&lt;html&gt;
+&lt;head&gt;
+  &lt;script src='http://maps.google.com/maps/api/js?sensor=false' type='text/javascript'&gt;&lt;/script&gt;
+  &lt;script src='wax/dist/wax.g.js' type='text/javascript'&gt;&lt;/script&gt;
+  &lt;link href='wax/theme/controls.css' rel='stylesheet' type='text/css' /&gt;
+  ...
+</pre>
+</div>
+
+Wax has a custom Google map type that can display tilesets described by
+the TileJSON format at `wax.g.connector`.
+
+<div class='section'>
+<div id='google-map' class='map'></div>
+<a class='attribution' href='http://mapbox.com/tileset/geography-class'>Geography Class</a>
+<pre class='sh_javascript run'>
+var tilejson = {
+  tilejson: '1.0.0',
+  scheme: 'tms',
+  tiles: ['http://a.tiles.mapbox.com/mapbox/1.0.0/geography-class/{z}/{x}/{y}.png'],
+  grids: ['http://a.tiles.mapbox.com/mapbox/1.0.0/geography-class/{z}/{x}/{y}.grid.json'],
+  formatter: function(options, data) { return data.NAME }
+};
+
+var m = new google.maps.Map(
+  document.getElementById('google-map'), {
+    center: new google.maps.LatLng(0, 0),
+    disableDefaultUI: true,
+    zoom: 1,
+    mapTypeId: google.maps.MapTypeId.ROADMAP });
+m.mapTypes.set('mb', new wax.g.connector(tilejson));
+m.setMapTypeId('mb');
+wax.g.interaction(m, tilejson);
+</pre>
+</div>
+
+# OpenLayers
+
+The Wax toolkit also supports [OpenLayers](http://openlayers.org), though it is
+**not recommended for new projects**, because it has become extremely
+bulky and difficult to use correctly.
+
+- `wax/ext/OpenLayers.js` contains the core OpenLayers library. **Do not use
+  the hosted version** unless absolutely necessary - the openlayers.org server
+  is not very fast or reliable, and the version that's hosted includes all
+  dependencies, making it extremely large.
+- `wax/dist/wax.ol.js` contains the Wax controls and integration code for
+  OpenLayers.
+- `wax/theme/controls.css` contains default styles for controls. You can always
+  swap in your own later on.
+
+<div class='section'>
+<pre>
+&lt;html&gt;
+&lt;head&gt;
+  &lt;script src='wax/ext/OpenLayers.js' type='text/javascript'&gt;&lt;/script&gt;
+  &lt;script src='wax/dist/wax.ol.js' type='text/javascript'&gt;&lt;/script&gt;
+  &lt;link href='wax/theme/controls.css' rel='stylesheet' type='text/css' /&gt;
+  ...
+</pre>
+</div>
+
+The tilesets that TileStream serves and TileMill creates are valid in the
+[TMS specification](http://wiki.osgeo.org/wiki/Tile_Map_Service_Specification),
+for which OpenLayers has the `OpenLayers.Layer.TMS` layer type.
+
+<div class='section'>
+<div id='openlayers-simple' class='map'></div>
+<a class='attribution' href='http://mapbox.com/tileset/geography-class'>Geography Class</a>
+<pre class='sh_javascript run'>
+// Use the mapbox openlayers zoom/pan control images.
+OpenLayers.ImgPath = 'http://js.mapbox.com/theme/dark/';
+// Set up a map in a div with the id 'openlayers-simple'
+var m = new OpenLayers.Map('openlayers-simple', {
+  units: 'm',
+  projection: new OpenLayers.Projection('EPSG:900913'),
+  maxExtent: new OpenLayers.Bounds(-20037508.34,
+    -20037508.34,
+    20037508.34,
+    20037508.34)
+});
+m.addLayer(new OpenLayers.Layer.TMS('geography-class',
+  'http://a.tiles.mapbox.com/mapbox/', {
+  maxResolution: 156543.0339,
+  type: 'png',
+  layername: 'geography-class'
+}));
+// The Wax OL interaction control can accept TileJSON.
+m.addControl(new wax.ol.Interaction({
+  tilejson: '1.0.0',
+  scheme: 'tms',
+  tiles: ['http://a.tiles.mapbox.com/mapbox/1.0.0/geography-class/{z}/{x}/{y}.png'],
+  grids: ['http://a.tiles.mapbox.com/mapbox/1.0.0/geography-class/{z}/{x}/{y}.grid.json'],
+  formatter: function(options, data) { return data.NAME }
+}));
+m.zoomTo(1);
+</pre>
+</div>
+
+# Comparison of Mapping Libraries
+
+Wax supports [Modest Maps] [1], [OpenLayers] [2], and [Google Maps] [3] APIs
+with custom map controls - the ability to interact with tooltips and links,
+a legend to illustrate map data, and other various utilities.
+
+Modest Maps is the recommended library for use with Wax. Being more compact 
+than OpenLayers, faster on older browsers than Polymaps, and more flexible 
+than the Google Maps makes it a good choice for custom mapping applications.
+The library was originally developed by Tom Carden and Mike Migurski of
+[Stamen](http://stamen.com/) as a port of [ActionScript and Python code](http://modestmaps.com/).
+
+The main reason that [Polymaps](http://polymaps.org/) is not recommended for
+mainstream usage is its lack of support for Internet Explorer. Modest Maps,
+OpenLayers, and Google Maps all have solid support for Internet Explorer 7
+and higher.
+
+[1]: https://github.com/stamen/modestmaps-js
+[2]: http://www.openlayers.org/
+[3]: http://code.google.com/apis/maps/documentation/javascript/
+
+# Protips
+
+## TileJSON URLs
+
+Servers like [TileStream](http://github.com/mapbox/tilestream) offer TileJSON
+for their tilesets at public URLs. Wax provides a basic JSONP loader for
+grabbing TileJSON from a server and using it to generate your map.
+
+<div class='section'>
+<div id='tilejson-url' class='map'></div>
+<a class='attribution' href='http://mapbox.com/tileset/world-light'>World Light</a>
+
+<pre class='sh_javascript run'>
+var url = 'http://tiles.mapbox.com/mapbox/api/Tileset/dc-nightvision';
+wax.tilejson(url, function(tilejson) {
+  var mm = com.modestmaps;
+  var m = new mm.Map('tilejson-url',
+    new wax.mm.connector(tilejson),
+    new mm.Point(240,120));
+  m.setCenterZoom(new mm.Location(
+    tilejson.center[1],  // lon
+    tilejson.center[0]), // lat
+    tilejson.center[2]); // zoom
+});
+</pre>
+</div>
+
+## Multiple servers
+
+[Most browsers have a limit](https://encrypted.google.com/search?hl=en&q=browser+domain+connection+limit&aq=f&aqi=&aql=&oq=)
+for how many things they can ask a single server for at one time - for 
+instance, Modest Maps will aim to download 18 tiles as soon as you load a map, 
+but Internet Explorer decides that the server shouldn't handle more than two
+requests at a time. Thus, only two tiles are downloaded at a time, despite the 
+fact that modern servers can handle many more. For this problem, we use multiple 
+servers, or more often, multiple domain names. So, you can use
+
+* `a.tile.mapbox.com`
+* `b.tile.mapbox.com` and
+* `c.tile.mapbox.com`
+
+For tile requests. Specify additional servers in your TileJSON `tiles` key
+instead of just one:
+
+<div class='section'>
+<pre class='sh_javascript'>
+var tilejson = {
+  scheme: 'tms',
+  tiles: [
+    'http://a.tile.mapbox.com/mapbox/1.0.0/world-glass/{z}/{x}/{y}.png',
+    'http://b.tile.mapbox.com/mapbox/1.0.0/world-glass/{z}/{x}/{y}.png',
+    'http://c.tile.mapbox.com/mapbox/1.0.0/world-glass/{z}/{x}/{y}.png'
+  ]
+};
+</pre>
+</div>
+
+## Records
+
+Records are a feature of Wax aimed to simplify the configuration of sites that
+host many maps. They translate the configuration of any mapping API into 
+logic-free [JSON](http://json.org/), where it can be stored in a database and 
+easily modified by other code.
+
+<div class='section'>
+<pre class='sh_javascript'>
+new google.maps.Map(document.getElementById('gmap'), {
+  center: new google.maps.LatLng(0, 0),
+  zoom: 2,
+  mapTypeId: google.maps.MapTypeId.ROADMAP
+});
+
+// The above code is equivalent to
+
+wax.Record({ 'wax':
+  ['@new google.maps.Map',
+    ['@call document.getElementById', 'gmap'],
+    {
+      center: ['@new google.maps.LatLng', 0, 0],
+      zoom: 2,
+      mapTypeId: ['@literal google.maps.MapTypeId.ROADMAP']
+    }
+  ]
+});
+</pre>
+</div>
+
+Records aim to be a very close translation from the actual Javascript. 
+You'll notice that the Javascript keyword `new` is represented by `@new`, 
+and the same with calling functions, using literal functions, etc.
+
+* Records are not written for variable-heavy code. A great chaining interface,
+with `@group`, `@inject`, and `@chain` is available for libraries that 
+are written in a chainable fashion, like Modest Maps and Polymaps.
+* Records are mainly written for code that will be 'done' when the Record 
+stops spinning. Although `wax.Record` returns the last object it was playing
+around with (most often the map object), this is more a convenience than a core 
+API guarantee.
+
+</div>
+</body>
+</html>
+
