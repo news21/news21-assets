@@ -1,0 +1,266 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+        <title>Website Horizontal Scrolling with jQuery</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="description" content="Website Horizontal Scrolling with jQuery" />
+        <meta name="keywords" content="jquery, horizontal, scrolling, scroll, smooth"/>
+        <link rel="stylesheet" href="css/style.css" type="text/css" media="screen"/>
+    </head>
+    <style>
+        a{
+            color:#fff;
+            text-decoration:none;
+        }
+        a:hover{
+            text-decoration:none;
+        }
+         div.banner_img{
+            position:fixed;
+            left:50px;
+            top:0px;
+        }
+        span.reference{
+            position:fixed;
+            background: #c2c2c2;
+            width: 100%;
+            text-align: left;
+            left:0px;
+            bottom:0px;
+            font-size:15px;
+            font-weight:regular;
+        }
+        span.reference a{
+            color:#000;
+			line-height: 30px;
+        }
+        span.reference a:hover{
+            color:#fff;
+            text-decoration:none;
+        }
+
+    </style>
+    <body>
+    <div class="banner_img"><img src="images/banner_img.gif" /></div>
+        <div>
+            <span class="reference">
+                <div class="nav"><img src="images/spacer.gif" />
+                <a href="#section1">the egg</a> | <a href="#section2">intestines</a> | <a href="#section3">inspections</a> | <a href="#section4">farm testing</a> | <a href="#section5">shipping</a> | <a href="#section6">slaughter</a> | <a href="#section7">plant testing</a> | <a href="#section8">final shipping</a> | <a href="#section9">coolers</a> | <a href="#section10">restaurants</a> | <a href="#section11">consumers</a>
+               
+            </div>
+            </span>
+        </div>
+
+        <div class="section black" id="section1">
+            <h3><img src="images/the_egg.gif" /></h3>
+            <h2><b>Problem:</b> Salmonella Starts in the Egg</h2>
+            <p>
+                Salmonella originates before chicken eggs are even laid. Chickens can be infected with salmonella while still in the egg, if their mothers, called breeders, harbor the pathogen.
+            </p>
+            
+            <h2><b>What could help:</b> more vaccines for mother hens</h2>
+            <p>
+                Vaccinating breeders can reduce salmonella incidence by over 30 percent, according to a recent study by the University of Georgia. Another University of Georgia study conducted this year showed that if a vaccinated chicken is contaminated with the bacteria, it will have on average 50 percent fewer cells of the bacteria than an unvaccinated chicken. The vaccines cost approximately 10 to 15 cents per breeder, according to Robbie Moody of Pfizer Animal Health, a company that produces vaccines. While vaccination has been on the rise over the past two years, it has still not been largely embraced by the poultry industry as a whole. And, despite real-world studies showing its effectiveness, this practice is not required by the federal government.<br /><br />
+                <a href="#section2"><img src="images/next_gry.gif" /></a>
+            </p>
+           
+        </div>
+        
+        
+       <div class="section white" id="section2">
+            <h3><img src="images/intestines.gif" /></h3>
+            <h2><b>Problem:</b> Salmonella Breeds in Chickens’ Intestines</h2>
+            <p>
+                Salmonella proliferates in the guts of chickens if their drinking water is not acidic enough, and the country’s two largest chicken producers, Pilgrims Corp. and Tyson, don’t require farms that raise their chickens to treat water to kill the pathogen. Nor does the government require farmers to do so.
+            </p>
+            
+            <h2><b>What could help:</b> Better Drinking Water Treatment</h2>
+            <p>
+                Adding precise levels of chlorine to chickens’ drinking water can reduce the spread of salmonella. Adding too little chlorine does nothing to kill the bug in the chicken; adding too much could harm the birds. Maintaining the proper level requires at least daily monitoring by the farmers, which can be costly and time consuming. Government or chicken companies could require the farmers to implement this effective water treatment, but they don’t. Chicken companies rarely ask their farmers to do so, and few farmers do it on their own.<br /><br />
+                <a href="#section1"><img src="images/prev_gry.gif" /></a><a href="#section3"><img src="images/next_gry.gif" /></a>
+            </p>
+           
+        </div>
+        
+        
+        <div class="section black" id="section3">
+            <h3><img src="images/inspections.gif" /></h3>
+            <h2><b>Problem:</b> No Government Inspections of Farms</h2>
+            <p>
+                Chicken houses are a major hot spot for salmonella contamination because the bacteria can easily spread through a large flock. Yet they are out of the reach of federal food safety regulators, whose jurisdiction doesn’t begin until the birds leave the farm. The major poultry companies, Pilgrim’s Corp., Tyson and Perdue, voluntarily send an employee to the farms to monitor water quality, ground moisture, ventilation and pest control--all of which have been shown to keep salmonella down. But most of the monitoring is not based on scientific testing.
+            </p>
+            
+            <h2><b>What could help:</b> Government Inspections of Chicken Houses</h2>
+            <p>
+                Processing plants have inspectors on site every day and are required to develop food safety plans. Similar requirements on the farm could be effective in containing salmonella before it spreads down the line. But a change in the law would be needed to give the USDA authority to inspect poultry farms, which would require the agency to hire more inspectors.<br /><br />
+                <a href="#section2"><img src="images/prev_gry.gif" /></a><a href="#section4"><img src="images/next_gry.gif" /></a>
+            </p>
+           
+        </div>
+        
+        
+        <div class="section white" id="section4">
+            <h3><img src="images/farm_testing.gif" /></h3>
+            <h2><b>Problem:</b> No Salmonella Testing on Farms</h2>
+            <p>
+                Live broiler chickens are almost never tested for salmonella, so no one knows if a flock destined for slaughter is heavily infected. The result of this is two-fold: Producers cannot accurately track what interventions are effective on their farms and processors cannot tailor their safety plans to more carefully handle contaminated flocks.
+            </p>
+            
+            <h2><b>What could help:</b> Test Flocks Like in Europe</h2>
+            <p>
+                On-farm testing is done in some European countries with smaller poultry industries, like Denmark and Sweden, and several leading U.S. consumer groups partially attribute their ability to control salmonella to this. In Denmark and Sweden the incidence of salmonella in poultry is 0 and 0.3 percent, respectively. If flocks were tested in the United States, those infected with salmonella could either be destroyed or diverted for further processing to kill pathogens before they reach the public, according to consumer groups.<br /><br />
+                <a href="#section3"><img src="images/prev_gry.gif" /></a><a href="#section5"><img src="images/next_gry.gif" /></a>
+            </p>
+           
+        </div>
+        
+        
+        <div class="section black" id="section5">
+            <h3><img src="images/shipping.gif" /></h3>
+            <h2><b>Problem:</b> Salmonella Spreads on Trucks</h2>
+            <p>
+                Salmonella can spread when birds are trucked from farm to slaughter. Rough conditions can raise their stress levels and cause salmonella in their guts to multiply. Crates and trucks are not washed regularly between shipments because there is often not enough time to allow them to air dry. Loading flocks into damp crates and trucks could potentially make the situation worse, since bacteria thrive in moist environments. There are no federal regulations aimed at stopping the spread of salmonella during transport.
+            </p>
+            
+            <h2><b>What could help:</b> Require Shippers to Clean Properly</h2>
+            <p>
+                Poultry scientists know that overcrowding, extreme temperatures and rough handling cause stress and raise salmonella levels, but they don’t know why. And they aren’t sure what practices to recommend to poultry companies to fix the problem. Requiring trucking companies to properly clean their cages and trucks would help reduce the cross contamination between chicken flocks in transport.<br /><br />
+                <a href="#section4"><img src="images/prev_gry.gif" /></a><a href="#section6"><img src="images/next_gry.gif" /></a>
+            </p>
+           
+        </div>
+        
+        
+         <div class="section white" id="section6">
+            <h3><img src="images/slaughter.gif" /></h3>
+            <h2><b>Problem:</b> Salmonella Spreads During Slaughter</h2>
+            <p>
+                Salmonella needs to be killed at every step in processing. If proper brushes and chemicals aren’t used, salmonella can spread through contact between birds. Scalding tanks -- heated baths to loosen feathers -- and defeathering machines are hot spots. Levels can spike when the birds are gutted, or if chill tanks -- a bath to lower meat below 40 degrees -- aren’t properly managed.
+            </p>
+            
+            <h2><b>What could help:</b> Use More Chemical Decontaminants</h2>
+            <p>
+                Most companies use antimicrobials in both the scalder and chill tank, and use rinses to treat defeathering machines. Experts say companies don’t use enough and are reluctant to pay for additional treatments. More precise evisceration techniques can keep guts from spilling. Some companies use bird washes and run their lines through a disinfecting mist. Brushes are also used in many places to remove feces. The government requires food safety plans but doesn’t require plants to use any particular intervention.<br /><br />
+                <a href="#section5"><img src="images/prev_gry.gif" /></a><a href="#section7"><img src="images/next_gry.gif" /></a>
+            </p>
+           
+        </div>
+        
+        
+        <div class="section black" id="section7">
+            <h3><img src="images/plant_testing.gif" /></h3>
+            <h2><b>Problem:</b> Minimal Salmonella Testing in Poultry Plants</h2>
+            <p>
+                Companies don’t have to test for salmonella. The USDA tests just 51 birds every year in most plants, even as a typical plant slaughters upward of a million birds every week. The USDA does not have legal authority to enforce a limit on salmonella in chickens at a plant, or to stop distribution and sale of contaminated birds. They can only review a plant’s safety plan and retest failing plants weeks later.
+            </p>
+            
+            <h2><b>What could help:</b> Increase Salmonella Testing During Processing</h2>
+            <p>
+                Daily testing can show whether or not a plant is killing salmonella. Likewise, leading consumer groups say inspectors should have the authority to shutdown plants with high salmonella levels. That would require a change in the law. The agency is launching a voluntary program that gives plants incentives to conduct more frequent tests, but not all plants are required to participate.<br /><br />
+                <a href="#section6"><img src="images/prev_gry.gif" /></a><a href="#section8"><img src="images/next_gry.gif" /></a>
+            </p>
+           
+        </div>
+        
+        
+         <div class="section white" id="section8">
+            <h3><img src="images/final_shipping.gif" /></h3>
+            <h2><b>Problem:</b> Salmonella Increases on Trip to Market</h2>
+            <p>
+                Salmonella bacteria in poultry can multiply to dangerous levels if temperature in transport rises above 41 degrees Fahrenheit. Companies check temperatures when products are loaded onto a truck and when they are unloaded. What happens in between is often unknown. Refrigeration units are not built to quickly bring warm meat back down to cold temperatures, which may be needed after making multiple delivery stops on a hot day. A 2007 industry study found unsafe temperatures in 30 percent of transports between processors and distribution centers.
+            </p>
+            
+            <h2><b>What could help:</b> Better Technology to Monitor Temperature</h2>
+            <p>
+                Trucking companies could use recorders to monitor temperature fluctuations during transit, but there are no government regulations requiring them to do so. Large companies with brand names to protect often require suppliers and distributors to use the recording devices, but they are not as common among small and medium-sized businesses.<br /><br />
+                <a href="#section7"><img src="images/prev_gry.gif" /></a><a href="#section9"><img src="images/next_gry.gif" /></a>
+            </p>
+           
+        </div>
+        
+        
+        <div class="section black" id="section9">
+            <h3><img src="images/coolers.gif" /></h3>
+            <h2><b>Problem:</b> Raw Chicken Not Kept Cold Enough</h2>
+            <p>
+                In 2009, the FDA tested chicken breasts sold in grocery stores and found that 21 percent were contaminated with salmonella. Salmonella can spread through cross contamination and bacteria can grow rapidly if there are inadequate store temperature controls. The FDA found 53 percent of deli departments didn’t keep food products at proper temperatures, providing a breeding ground for bacteria. If temperatures go above 41 degrees Fahrenheit, a few bacteria can multiply into billions within 12 hours. Enforcement of holding temperatures and food-handling procedures vary depending on local health department food codes.
+            </p>
+            
+            <h2><b>What could help:</b> Improve Training for Store Workers</h2>
+            <p>
+                More training for employees on food-handling practices and proper holding temperatures could help prevent food from being stored at improper temperatures, thus reducing the possibility of bacterial growth. Major chains like Giant and Wegmans have their own employee training programs for food handling.<br /><br />
+                <a href="#section8"><img src="images/prev_gry.gif" /></a><a href="#section10"><img src="images/next_gry.gif" /></a>
+            </p>
+           
+        </div>
+        
+        
+        <div class="section white" id="section10">
+            <h3><img src="images/restaurants.gif" /></h3>
+            <h2><b>Problem:</b> Restaurant Workers Don’t Wash Properly</h2>
+            <p>
+                An FDA study in 2008 found only 24 percent of workers in full-service restaurants had cleaned their hands properly when they were required, including after they used the bathroom. Poor hygiene practices can allow pathogens to spread. Food workers who don’t wash their hands after handling raw meat can spread salmonella across the restaurant by touching other foods or utensils. Cooking may destroy bacteria on meat, but salmonella can live on uncooked produce that goes onto the salad bar.
+            </p>
+            
+            <h2><b>What could help:</b> More Hand Washing Opportunities</h2>
+            <p>
+                Worker training, hand-washing signs and convenient hand-washing stations can mitigate cross-contamination in commercial kitchens. Only 15 states and the District of Columbia require restaurants to have a certified food safety manager in the kitchen at all times in order to operate. The FDA also suggests that restaurants encourage employees not to show up for work when they're sick.<br /><br />
+                <a href="#section9"><img src="images/prev_gry.gif" /></a><a href="#section11"><img src="images/next_gry.gif" /></a>
+            </p>
+           
+        </div>
+        
+        
+        <div class="section black" id="section11">
+            <h3><img src="images/consumers.gif" /></h3>
+            <h2><b>Problem:</b> Consumers Don't Keep Food Safe</h2>
+            <p>
+                Consumers bring salmonella into their homes when they purchase poultry. The bacteria can proliferate if chicken is defrosted at room temperature or if cooked to less than 165 degrees. Half of Americans don’t ever use food thermometers. The pathogen can contaminate kitchen surfaces if not cleaned properly. Almost half of consumers use the same cutting boards for raw poultry and produce.
+            </p>
+            
+            <h2><b>What could help:</b> Increase Food Safety Education</h2>
+            <p>
+               The USDA and the Ad Council just recently launched a new ad campaign with television, radio and print ads that reinforce the mantra of “clean, separate, cook and chill” to educate consumers about what they can do to protect themselves. Cooking shows, recipes and government food safety campaigns can raise awareness. Manufacturers can make sure the cooking instructions on frozen or packaged foods are accurate, detailed and clear.<br /><br />
+                <a href="#section10"><img src="images/prev_gry.gif" /></a>
+            </p>
+           
+        </div>
+
+        <!-- The JavaScript -->
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>		
+        <script type="text/javascript" src="jquery.easing.1.3.js"></script>
+        <script type="text/javascript">
+            $(function() {
+                $('div.nav a').bind('click',function(event){
+                    var $anchor = $(this);
+                    /*
+                    if you want to use one of the easing effects:
+                    $('html, body').stop().animate({
+                        scrollLeft: $($anchor.attr('href')).offset().left
+                    }, 1500,'easeInOutExpo');
+                     */
+                    $('html, body').stop().animate({
+                        scrollLeft: $($anchor.attr('href')).offset().left
+                    }, 1000);
+                    event.preventDefault();
+                });
+            });
+            
+            $(function() {
+                $('p a').bind('click',function(event){
+                    var $anchor = $(this);
+                    /*
+                    if you want to use one of the easing effects:
+                    $('html, body').stop().animate({
+                        scrollLeft: $($anchor.attr('href')).offset().left
+                    }, 1500,'easeInOutExpo');
+                     */
+                    $('html, body').stop().animate({
+                        scrollLeft: $($anchor.attr('href')).offset().left
+                    }, 1000);
+                    event.preventDefault();
+                });
+            });
+        </script>
+    </body>
+</html>
