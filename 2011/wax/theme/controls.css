@@ -65,6 +65,7 @@
   width:28px;
   height:28px;
   background:#fff 30px 30px no-repeat;
+	color: #000;
   box-shadow:rgba(0,0,0,0.1) 0px 1px 3px;
   -moz-box-shadow:rgba(0,0,0,0.1) 0px 1px 3px;
   -webkit-box-shadow:rgba(0,0,0,0.1) 0px 1px 3px;
@@ -121,4 +122,15 @@
   bottom:0;
   left:0;
   }
+
+	.wax-fullscreen-map {
+	  position:fixed !important;
+	  width:auto !important;
+	  height:auto !important;
+	  top:0;
+	  left:0;
+	  right:0;
+	  bottom:0;
+	  z-index:999999999999;
+	  }
 
