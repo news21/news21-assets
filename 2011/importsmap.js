@@ -9,5 +9,7 @@ wax.tilejson(url, function(tilejson) {
     tilejson.center[0]), // lat
     tilejson.center[2]); // zoom
   wax.mm.interaction(m, tilejson);
+	wax.mm.zoomer(m).appendTo(m.parent);
+	wax.mm.legend(m, tilejson).appendTo(m.parent);
   wax.mm.fullscreen(m, tilejson).appendTo(m.parent);
 });
