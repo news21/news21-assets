@@ -1,127 +1,88 @@
-a.wax-fullscreen {
-  /* TODO: sprite-based fullscreen button */
-  position: absolute;
-  top: 5px;
-  left: 5px;
-  z-index: 99999;
-  }
-
-a.zoomer {
-  text-decoration:none;
+.wax-legends,
+.wax-tooltip {
   position:absolute;
-  background-color:#444;
-  color:#fff;
-  line-height:25px;
-  font-size:20px;
-  z-index:99999;
-  text-align:center;
-  width:25px;
-  height:25px;
-  }
-
-  a.zoomin {
-    left:5px;
-    }
-
-  a.zoomout {
-    left:35px;
-    }
-
-  a.zoomdisabled {
-    background-color:#333;
-    }
-
-
-.wax-fullscreen-map {
-  position:fixed !important;
-  width:auto !important;
-  height:auto !important;
-  top:0;
-  left:0;
-  right:0;
-  bottom:0;
-  z-index:999999999999;
-  }
-
-.wax-legends {
-  position:absolute;
-  left:10px;
-  bottom:10px;
   z-index:999999;
+  right:10px;
   }
 
-.wax-legends .wax-legend {
-  padding:10px;
-  background:#333;
-  color:#fff;
+.wax-legends { bottom:10px; }
+.wax-tooltip { top:10px; }
+
+.wax-legend,
+.wax-tooltip {
+  font:normal 13px/20px Arial,sans-serif;
+  color:#222;
+  min-width:180px;
+  max-width:280px;
+  max-height:400px;
+  padding:4px 9px;
+  border:1px solid #ccc;
+  background: #fff;
+  overflow:auto;
+  border-radius:3px;
+  -moz-border-radius:3px;
+  -webkit-border-radius:3px;
+  box-shadow:rgba(0,0,0,0.1) 0px 1px 3px;
+  -moz-box-shadow:rgba(0,0,0,0.1) 0px 1px 3px;
+  -webkit-box-shadow:rgba(0,0,0,0.1) 0px 1px 3px;
   }
 
-	.wax-legends,
-	.wax-tooltip {
-	  position:absolute;
-	  z-index:9;
-	  right:10px;
-	  }
-
-	.wax-legends { bottom:10px; }
-	.wax-tooltip { top:10px; }
-
-	.wax-legend,
-	.wax-tooltip {
-	  font:normal 13px/20px Arial,sans-serif;
-	  color:#222;
-	  min-width:180px;
-	  max-width:280px;
-	  max-height:400px;
-	  padding:4px 9px;
-	  border:1px solid #ccc;
-	  background: #fff;
-	  overflow:auto;
-	  border-radius:3px;
-	  -moz-border-radius:3px;
-	  -webkit-border-radius:3px;
-	  box-shadow:rgba(0,0,0,0.1) 0px 1px 3px;
-	  -moz-box-shadow:rgba(0,0,0,0.1) 0px 1px 3px;
-	  -webkit-box-shadow:rgba(0,0,0,0.1) 0px 1px 3px;
-	  }
-
-	.wax-tooltip .close,
-	.wax-fullscreen,
-	{
-	  text-indent:-9999px;
-	  overflow:hidden;
-	  display:block;
-	  position:absolute;
-	  border:1px solid #ccc;
-	  text-indent:-9999px;
-	  overflow:hidden;
-	  }
-
-	.wax-tooltip .close:active,
-	.wax-fullscreen:active,
- 	{
-	  margin-top:1px;
-	  border-color:#bbb;
-	  background-color:#ddd;
-	  box-shadow:inset rgba(0,0,0,0.1) 0px 1px 3px;
-	  -moz-box-shadow:inset rgba(0,0,0,0.1) 0px 1px 3px;
-	  -webkit-box-shadow:inset rgba(0,0,0,0.1) 0px 1px 3px;
-	  }
-
-	.wax-tooltip .close {
-	  top:4px;
-	  right:4px;
-	  width:18px;
-	  height:18px;
-	  background:#fff url(../images/controls.png) -6px -6px no-repeat;
-	  border-radius:3px;
-	  -moz-border-radius:3px;
-	  -webkit-border-radius:3px;
-	  }
-
-.wax-mobile-body .wax-tooltip {
+.wax-tooltip .close,
+.zoomer {
+  text-indent:-9999px;
+  overflow:hidden;
+  display:block;
   position:absolute;
-  top:50px;
+  border:1px solid #ccc;
+  text-indent:-9999px;
+  overflow:hidden;
+  }
+
+.wax-tooltip .close:active,
+.zoomer:active {
+  margin-top:1px;
+  border-color:#bbb;
+  background-color:#ddd;
+  box-shadow:inset rgba(0,0,0,0.1) 0px 1px 3px;
+  -moz-box-shadow:inset rgba(0,0,0,0.1) 0px 1px 3px;
+  -webkit-box-shadow:inset rgba(0,0,0,0.1) 0px 1px 3px;
+  }
+
+.wax-tooltip .close {
+  top:4px;
+  right:4px;
+  width:18px;
+  height:18px;
+  background:#fff -6px -6px no-repeat;
+  border-radius:3px;
+  -moz-border-radius:3px;
+  -webkit-border-radius:3px;
+  }
+
+.zoomer {
+  left:10px;
+  top:10px;
+  width:28px;
+  height:28px;
+  background:#fff 30px 30px no-repeat;
+  box-shadow:rgba(0,0,0,0.1) 0px 1px 3px;
+  -moz-box-shadow:rgba(0,0,0,0.1) 0px 1px 3px;
+  -webkit-box-shadow:rgba(0,0,0,0.1) 0px 1px 3px;
+  }
+
+.zoomin {
+  background-position:-31px -1px;
+  left:39px;
+  border-radius:0px 3px 3px 0px;
+  -moz-border-radius:0px 3px 3px 0px;
+  -webkit-border-radius:0px 3px 3px 0px;
+  }
+
+.zoomout {
+  background-position:-61px -1px;
+  border-radius:3px 0px 0px 3px;
+  -moz-border-radius:3px 0px 0px 3px;
+  -webkit-border-radius:3px 0px 0px 3px;
   }
 
 .zoombox-box,
@@ -144,22 +105,11 @@ a.zoomer {
   margin:0;
   padding:0;
   position:absolute;
-  background: url(blank.gif);
   top:0;
   left:0;
   }
 
-.wax-point-div {
-  width:10px;
-  height:10px;
-  margin-left:-5px;
-  margin-top:-5px;
-  background:#fff;
-  border:1px solid #333;
-  -webkit-border-radius:5px;
-  }
-
-div.wax-attribution {
+.wax-attribution {
   position:absolute;
   background-color:rgba(255, 255, 255, 0.7);
   color:#333;
@@ -171,11 +121,4 @@ div.wax-attribution {
   bottom:0;
   left:0;
   }
-
-.wax-attribution.wax-g {
-  left:65px;
-  bottom:4px;
-  background:transparent;
-  }
-
 
