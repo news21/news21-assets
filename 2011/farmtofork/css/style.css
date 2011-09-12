@@ -394,10 +394,15 @@ div.related_stories p {
 }
 
 div.related_stories h3 {
+	font-size: 1.2em;
 	margin-right: 18px;
 	margin-top: 10px;
 	margin-left: 18px;
 	float: left;
+}
+
+div.related_stories h3 a {
+	color: white;
 }
 
 .credits {
