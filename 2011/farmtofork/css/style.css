@@ -269,6 +269,7 @@ div.details_slider {
 	color: #fff;
 }
 
+
 div.detail {
 	padding: 5px;
 	margin-left: 11px;
@@ -287,6 +288,10 @@ div.detail h2 {
 }
 div.detail div {
 	width: 600px;
+}
+
+div.detail div p {
+	margin-bottom: 6px;
 }
 
 div.factoids ul li{
@@ -374,6 +379,7 @@ div.related_stories div {
 	float: left;
 	background: #000;
 	border-left: 1px dotted #ccc;
+	min-height: 12em;
 }
 
 div.related_stories div:first-child {
