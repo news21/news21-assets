@@ -6,50 +6,41 @@
         <meta name="description" content="Website Horizontal Scrolling with jQuery" />
         <meta name="keywords" content="jquery, horizontal, scrolling, scroll, smooth"/>
         <link rel="stylesheet" href="css/style.css" type="text/css" media="screen"/>
+	
+		<script type="text/javascript" src="script.js"></script>
     </head>
-    <style>
-        a{
-            color:#fff;
-            text-decoration:none;
-        }
-        a:hover{
-            text-decoration:none;
-        }
-         div.banner_img{
-            position:fixed;
-            left:50px;
-            top:0px;
-        }
-        span.reference{
-            position:fixed;
-            background: #c2c2c2;
-            width: 100%;
-            text-align: left;
-            left:0px;
-            bottom:0px;
-            font-size:15px;
-            font-weight:regular;
-        }
-        span.reference a{
-            color:#000;
-			line-height: 30px;
-        }
-        span.reference a:hover{
-            color:#fff;
-            text-decoration:none;
-        }
-
-    </style>
     <body>
-    <div class="banner_img"><img src="images/banner_img.gif" /></div>
-        <div>
-            <span class="reference">
-                <div class="nav"><img src="images/spacer.gif" />
-                <a href="#section1">the egg</a> | <a href="#section2">intestines</a> | <a href="#section3">inspections</a> | <a href="#section4">farm testing</a> | <a href="#section5">shipping</a> | <a href="#section6">slaughter</a> | <a href="#section7">plant testing</a> | <a href="#section8">final shipping</a> | <a href="#section9">coolers</a> | <a href="#section10">restaurants</a> | <a href="#section11">consumers</a>
-               
-            </div>
-            </span>
-        </div>
+    <div class="banner_img"><img src="images/banner_img.gif" /></div>	<ul class="menu" id="menu">
+			<li><a href="#" class="menulink">Choose your path</a>
+				<ul>
+					<li><a href="#section1">the egg</a></li>
+					<li><a href="#section2">intestines</a></li>
+					<li><a href="#section3">inspections</a></li>
+					<li><a href="#section4">farm testing</a></li>
+					<li><a href="#section5">shipping</a></li>
+					<li><a href="#section6">slaughter</a></li>
+					<li><a href="#section7">plant testing</a></li>
+					<li><a href="#section8">final shipping</a></li>
+					<li><a href="#section9">coolers</a></li>
+					<li><a href="#section10">restaurants</a></li>
+					<li><a href="#section11">consumers</a></li>
+			</ul>		
+			</li>
+			</ul>
+
+
+	
+	
+	<script type="text/javascript">
+		var menu=new menu.dd("menu");
+		menu.init("menu","menuhover");
+	</script>
+        
+
+		 <div class="section black" id="section0">
+	            <h4><img src="images/intro.gif" /></h4>
+
+	        </div>
 
         <div class="section black" id="section1">
             <h3><img src="images/the_egg.gif" /></h3>
@@ -221,7 +212,7 @@
             <h2><b>What could help:</b> Increase Food Safety Education</h2>
             <p>
                The USDA and the Ad Council just recently launched a new ad campaign with television, radio and print ads that reinforce the mantra of “clean, separate, cook and chill” to educate consumers about what they can do to protect themselves. Cooking shows, recipes and government food safety campaigns can raise awareness. Manufacturers can make sure the cooking instructions on frozen or packaged foods are accurate, detailed and clear.<br /><br />
-                <a href="#section10"><img src="images/prev_gry.gif" /></a>
+                <a href="#section10"><img src="images/prev_gry.gif" /></a><a href="#section1"><img src="images/start.gif" /></a>
             </p>
            
         </div>
@@ -231,7 +222,7 @@
         <script type="text/javascript" src="jquery.easing.1.3.js"></script>
         <script type="text/javascript">
             $(function() {
-                $('div.nav a').bind('click',function(event){
+                $('ul.menu a').bind('click',function(event){
                     var $anchor = $(this);
                     /*
                     if you want to use one of the easing effects:
