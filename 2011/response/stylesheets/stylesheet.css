@@ -22,9 +22,9 @@ div#deck {
 	clear: both;
 }
 div#photocredits a{
-	font-size: 0.7em;
+	font-size: 0.65em;
 	position: relative;
-	top: -20px;
+	top: -33px;
 	left: 6px;
 }
 p.legend img{
