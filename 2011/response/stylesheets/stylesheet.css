@@ -21,6 +21,12 @@ div#deck div.deck_tile {
 div#deck {
 	clear: both;
 }
+div#photocredits a{
+	font-size: 0.7em;
+	position: relative;
+	top: -20px;
+	left: 6px;
+}
 p.legend img{
 	vertical-align: text-bottom;
 }

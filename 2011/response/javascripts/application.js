@@ -55,7 +55,6 @@ $(document).ready(function(){
 
 	$('thead th').click(function(event) {
 		$('div#disease_descriptions div').hide();
-		console.log('#'+$(this).text().replace(/[ .-]/g,''));
 		$('#'+$(this).text().replace(/[ .-]/g,'')).show();
 	});
 	$('tbody tr td img').tooltip({
