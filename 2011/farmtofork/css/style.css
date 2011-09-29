@@ -168,11 +168,16 @@ a:hover { color: #555; }
  * Author: Mark Ng / Kyle Bruggeman
  */
 
-div#container {
-	width: 900px;
+div#news21-header{
+margin-left: auto;
+margin-right: auto;
+} 
+
+div.container {
+width: 900px;
+margin-left: auto;
+margin-right: auto;
 }
-
-
 
 nav ul {
 	display: block;
@@ -373,7 +378,7 @@ nav ul li a.active.green, nav ul li a.green:hover {
 	margin-right: 0px;
 }
 div.related_stories div {
-	width: 33.33%;
+	width: 33%; /*change*/
 	float: left;
 	background: #000;
 	border-left: 1px dotted #ccc;
@@ -386,7 +391,7 @@ div.related_stories div:first-child {
 
 div.related_stories p {
 	margin-right: 18px;
-	margin-left: 18px;
+	margin-left: 10px;        
 	float: left;
 	margin-bottom: 20px;
 }
@@ -395,7 +400,7 @@ div.related_stories h3 {
 	font-size: 1.2em;
 	margin-right: 18px;
 	margin-top: 10px;
-	margin-left: 18px;
+	margin-left: 10px; 
 	float: left;
 }
 
@@ -433,6 +438,10 @@ div.credits a:hover {
 	text-decoration: none;
 }
 
+div#news21-footer {
+margin-left: auto;
+margin-right: auto;
+}
 
 /**
  * Non-semantic helper classes: please define your styles before this section.
