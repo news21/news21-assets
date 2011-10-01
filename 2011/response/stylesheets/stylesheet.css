@@ -12,7 +12,13 @@
 	font-size: 1em;
 	font-weight: normal;
 }
-
+div#news21-footer, div#news21-header, div#table_fu {
+    margin-left: auto;
+    margin-right: auto;
+}
+div#table_fu {
+    margin-top: 1.5em;
+}
 div#deck div.deck_tile {
 	display: block;
 	width: 49%;
@@ -20,12 +26,6 @@ div#deck div.deck_tile {
 }
 div#deck {
 	clear: both;
-}
-div#photocredits a{
-	font-size: 0.65em;
-	position: relative;
-	top: -33px;
-	left: 6px;
 }
 p.legend img{
 	vertical-align: text-bottom;
